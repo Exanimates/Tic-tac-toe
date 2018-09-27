@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-</head>
-<body>
+<html lang="Ru">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+	<title>Tic tac toe</title>
+	<link rel="stylesheet" href="./CSS/index.css">
+  </head>
+  <body>
+	  <header>
+		<a href="">Игра</a>
+		<a href="">История</a>
+	  </header>
 
-</body>
+	  <div class="titles">
+		  <span class="game-title" id="message">Компьютер: O</span>
+		  <span class="game-title" id="message">Игрок: X</span>
+	  </div>
+
+	  <div class="game">
+		  <div class="container">
+				  <div class="game-item"  data-ceil="1"></div>
+				  <div class="game-item" data-ceil="2"></div>
+				  <div class="game-item" data-ceil="3"></div>
+				  <div class="game-item" data-ceil="4"></div>
+				  <div class="game-item" data-ceil="5"></div>
+				  <div class="game-item" data-ceil="6"></div>
+				  <div class="game-item" data-ceil="7"></div>
+				  <div class="game-item" data-ceil="8"></div>
+				  <div class="game-item" data-ceil="9"></div>
+		  </div>
+	  </div>
+
+	  <button id="reset-game">Очистить</button>
+  </body>
+
+  <script src="main.js"></script>
 </html>
