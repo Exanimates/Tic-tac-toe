@@ -22,24 +22,27 @@
 			  <span id="message" >Ходит игрок: X</span>
 		  </div>
 	  </div>
-
-
-	  <div class="game">
-		  <div class="container">
-				  <div class="game-item"  data-ceil="1"></div>
-				  <div class="game-item" data-ceil="2"></div>
-				  <div class="game-item" data-ceil="3"></div>
-				  <div class="game-item" data-ceil="4"></div>
-				  <div class="game-item" data-ceil="5"></div>
-				  <div class="game-item" data-ceil="6"></div>
-				  <div class="game-item" data-ceil="7"></div>
-				  <div class="game-item" data-ceil="8"></div>
-				  <div class="game-item" data-ceil="9"></div>
-		  </div>
-	  </div>
-
+	<div class="game">
+		<table id="board">
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
 	  <button id="reset-game">Очистить</button>
   </body>
-
-  <script src="main.js"></script>
+  <script src="JavaScript/index.js"></script>
+  <script src="JavaScript/GameLogic.js"></script>
 </html>
