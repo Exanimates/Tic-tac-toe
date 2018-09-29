@@ -108,7 +108,7 @@ header a{
     background-color:#ccc
 }
 table {
-	width: 35%;
+	width: 250px;
 	border-collapse: collapse;
 }
 td {
@@ -122,6 +122,10 @@ td::after {
 }
 td {
 	border: 3px solid white;
+}
+td:hover{
+	background-color:#ccc;
+	cursor: pointer;
 }
 td:first-of-type {
 	border-left-color: transparent;
