@@ -119,11 +119,6 @@ td {
 	vertical-align: middle;
 }
 
-td::after {
-	content: '';
-	display: block;
-}
-
 td {
 	border: 3px solid white;
 }
