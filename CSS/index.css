@@ -109,19 +109,29 @@ header a{
 }
 table {
 	width: 250px;
+	height: 250px;
 	border-collapse: collapse;
 }
 td {
-	width: 33.333%;
-	border: 3px solid white;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	vertical-align: middle;
 }
+
 td::after {
 	content: '';
 	display: block;
-	margin-top: 100%;
 }
+
 td {
 	border: 3px solid white;
+}
+tr{
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	flex-flow: row nowrap;
 }
 td:hover{
 	background-color:#ccc;
