@@ -17,7 +17,12 @@ header{
 	border-radius:20px;
 }
 .titles{
+	width: 250px;
+	display: block;
+	align-items: center;
+	justify-content: center;
 	margin-top: 20px;
+	border:1px solid white;
 }
 header a{
 	margin-left: 5px;
@@ -32,45 +37,56 @@ header a{
 }
 .player-title
 {
-    display:block;
+    display:grid;
     margin:auto;
     font-size:35px;
     font-weight:bold;
     color:white;
 	width: 250px;
-    border-bottom: 1px solid #f5f5f5;
     text-align:center;
+}
+.step-info{
+	width: 150px;
+	height: 80px;
+	margin-left: 21%;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	border:1px solid white;
+}
+.main-block{
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .game{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 500px;
+	height: 70%;
 }
 
 .game-item{
-    position:relative;
-    line-height:48px;
     width: 100%;
     height: 100%;
-    display: block;
-    cursor:pointer;
-    font-size:30px;
-    font-weight:bold;
-    -webkit-transition:all linear 0.3s;
-    -o-transition:all linear 0.3s;
-    transition:all linear 0.3s;
-	padding: 20px;
-	text-align: center
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	position: center;
+    display: flex;
+	font-size: 30px;
+    cursor:pointer
 }
 .game-item:hover{
-    background-color:#ccc
+
 }
 .game-item.o{
-    background-color:#abfdab
+    color: white;
 }
 .game-item.x{
-    background-color:#f99
+	color: white;
 }
 #reset-game{
     display:block;
@@ -83,6 +99,10 @@ header a{
     -webkit-transition:all linear 0.3s;
     -o-transition:all linear 0.3s;
     transition:all linear 0.3s
+}
+#message{
+	color: white;
+	text-align: center;
 }
 #reset-game:hover{
     background-color:#ccc
