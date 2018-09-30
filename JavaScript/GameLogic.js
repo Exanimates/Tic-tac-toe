@@ -182,6 +182,7 @@ class GameLogic{
 				}
 				alert(winString);
 				gameLogic.removeEvent();
+				gameLogic.createTable();
 				return winString;
 			}
 
@@ -189,6 +190,23 @@ class GameLogic{
 		if (gameLogic.stepCount >= 9){
 			return "Ничья";
 		}
+	}
+
+	createTable(){
+		var history = document.getElementById("history");
+		var tableHistory = document.createElement('table');
+		for (var i = 0; i < 3; i++)
+		{
+			var row = document.createElement("tr");
+			for(var j = 0; j < 3; j++){
+				var td = document.createElement("td");
+				td.innerHTML = gameLogic.board.rows[i].cells[j].innerHTML;
+				td.classList = gameLogic.board.rows[i].cells[j].classList;
+				row.appendChild(td);
+			}
+			tableHistory.appendChild(row);
+		}
+		history.appendChild(tableHistory);
 	}
 
 	removeEvent(){

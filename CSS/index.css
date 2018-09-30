@@ -78,7 +78,12 @@ header a{
 	display: none;
 	align-items: center;
 	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 20px;
 	height: 60%;
+}
+#history table{
+	margin-left: 20px;
 }
 .historyElement{
 	border:1px solid white;
@@ -101,7 +106,7 @@ header a{
 	text-align: center;
 }
 #reset-game{
-	display: none;
+
 }
 #reset-game:hover{
     background-color:#ccc
