@@ -37,7 +37,6 @@ header a{
 }
 .player-title
 {
-    display:grid;
     margin:auto;
     font-size:35px;
     font-weight:bold;
@@ -46,11 +45,10 @@ header a{
     text-align:center;
 }
 .step-info{
-	width: 150px;
-	height: 80px;
-	margin-left: 21%;
+	width: 450px;
+	height: 120px;
 	font-size: 20px;
-	display: flex;
+	display: grid;
 	align-items: center;
 	justify-content: center;
 	margin-top: 20px;
@@ -102,6 +100,7 @@ td {
 td.x{
 	background-color:#abfdab;
 	color: black;
+	background-size: 5px;
 }
 td.o{
 	background-color:#f99;

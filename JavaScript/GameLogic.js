@@ -172,6 +172,11 @@ class GameLogic{
 			if(winRow || winColumn || winLeftTop || winLeftBottom){
 				flag = true;
 				const winString = gameLogic.player === "o" ? "Вы проиграли" : "Вы победили";
+				if (gameLogic.player === "o")
+					gameLogic.compCountHtml.innerText = Number(gameLogic.compCountHtml.innerText) + 1;
+				else {
+					gameLogic.playrCountHtml.innerText = Number(gameLogic.playrCountHtml.innerText) + 1;
+				}
 				alert(winString);
 				gameLogic.removeEvent();
 				return winString;
