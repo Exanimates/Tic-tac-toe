@@ -158,6 +158,7 @@ class GameLogic{
 	checkWin(){
 		var flag;
 		gameLogic.stepCount++;
+		var countItems = 0;
 		var count = gameLogic.board.getElementsByTagName("tr").length;
 		for(var i = 0; i < count; i++){
 			var winRow = true,
@@ -166,6 +167,7 @@ class GameLogic{
 				winLeftBottom = true;
 
 			for(var k = 0; k < count; k++){
+				if(gameLogic.board.rows[i].cells[k].textContent) countItems++;
 				if(gameLogic.board.rows[i].cells[k].innerHTML !== gameLogic.player) winRow = false;
 				if(gameLogic.board.rows[k].cells[i].innerHTML !== gameLogic.player) winColumn = false;
 				if(gameLogic.board.rows[k].cells[k].innerHTML !== gameLogic.player) winLeftTop = false;
@@ -187,7 +189,10 @@ class GameLogic{
 			}
 
 		}
-		if (gameLogic.stepCount >= 9){
+		if (!flag && (countItems === count * count)){
+			alert("Ничья");
+			gameLogic.removeEvent();
+			gameLogic.createTable();
 			return "Ничья";
 		}
 	}
