@@ -8,8 +8,7 @@
   </head>
   <body>
 	<header>
-		<a href="">Игра</a>
-		<a href="">История</a>
+		<span>Игра крестики нолики</span>
 	</header>
 
 	<div class="main-block">
@@ -40,6 +39,7 @@
 				<td></td>
 				<td></td>
 				<td></td>
+
 			</tr>
 			<tr>
 				<td></td>
@@ -47,8 +47,17 @@
 				<td></td>
 			</tr>
 		</table>
+
 	</div>
-	  <button id="reset-game">Очистить</button>
+
+
+	  <button id="reset-game" class="buttons">Начать с начала</button>
+	<div class="showHistory">
+		<button class="buttons" id="buttonShowHistory" >Показать историю</button>
+	</div>
+   <div id="history">
+
+   </div>
   </body>
 
   <script src="JavaScript/GameLogic.js"></script>

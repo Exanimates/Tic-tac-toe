@@ -15,6 +15,8 @@ header{
 	justify-content: center;
 	border:1px solid white;
 	border-radius:20px;
+	color: white;
+	font-size: 20px;
 }
 .titles{
 	width: 250px;
@@ -44,6 +46,13 @@ header a{
 	width: 250px;
     text-align:center;
 }
+.showHistory{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 10px;
+	margin-top: 25px;
+}
 .step-info{
 	width: 450px;
 	height: 120px;
@@ -63,9 +72,19 @@ header a{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 70%;
+	height: 60%;
 }
-#reset-game{
+#history{
+	display: none;
+	align-items: center;
+	justify-content: center;
+	height: 60%;
+}
+.historyElement{
+	border:1px solid white;
+	border-radius:20px;
+}
+.buttons{
     display:block;
     margin:0 auto;
     border:1px solid #000;
@@ -80,6 +99,9 @@ header a{
 #message{
 	color: white;
 	text-align: center;
+}
+#reset-game{
+	display: none;
 }
 #reset-game:hover{
     background-color:#ccc
