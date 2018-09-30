@@ -67,27 +67,6 @@ header a{
 	justify-content: center;
 	height: 70%;
 }
-
-.game-item{
-    width: 100%;
-    height: 100%;
-	text-align: center;
-	align-items: center;
-	justify-content: center;
-	position: center;
-    display: flex;
-	font-size: 30px;
-    cursor:pointer
-}
-.game-item:hover{
-
-}
-.game-item.o{
-    color: white;
-}
-.game-item.x{
-	color: white;
-}
 #reset-game{
     display:block;
     margin:0 auto;
@@ -115,10 +94,19 @@ table {
 td {
 	width: 30px;
 	height: 30px;
+	font-size: 22px;
 	text-align: center;
 	vertical-align: middle;
+	color: white;
 }
-
+td.x{
+	background-color:#abfdab;
+	color: black;
+}
+td.o{
+	background-color:#f99;
+	color: black;
+}
 td {
 	border: 3px solid white;
 }
