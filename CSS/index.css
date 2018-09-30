@@ -84,6 +84,9 @@ header a{
 }
 #history table{
 	margin-left: 20px;
+	margin-top: 20px;
+	border:1px solid white;
+	border-radius:20px;
 }
 .historyElement{
 	border:1px solid white;

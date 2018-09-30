@@ -1,160 +1,250 @@
 class GameLogic{
 
 	constructor(){
-		this.board = document.getElementById("board");
-		this.compCountHtml = document.getElementById("computer-count");
-		this.playrCountHtml = document.getElementById("player-count");
+		this.board = document.getElementById("board"); //Игровое поле в виде таблицы
+		this.compCountHtml = document.getElementById("computer-count"); // Счет компьютера
+		this.playrCountHtml = document.getElementById("player-count"); // Счет игрока
 		this.player = "x";
 		this.stepCount = 0;
-		this.compCount = 0;
-		this.playerCount = 0;
 	}
 
+	//Текущие нажатие на клетку
 	currentStep() {
-		if (!this.textContent) {
+		if (!this.textContent) { // Проверка содержимого ячейки
 
+			// Ход игрока
 			if (gameLogic.player === "x")
 				this.innerText = gameLogic.player;
 			this.classList.add(gameLogic.player);
-			if( typeof gameLogic.checkWin() === "string" ){
+			if( gameLogic.checkWin())
 				return;
-			}
+			//Ход компьютера
 			gameLogic.changePlayer();
 			if (gameLogic.player === "o"){
 				gameLogic.computerStep();
-				if( typeof gameLogic.checkWin() === "string" ){
+				if(gameLogic.checkWin()){
 					return;
 				}
 				gameLogic.changePlayer();
 			}
 		}
 	}
-
+	// Псевдо ИИ
 	computerStep(){
 		var count = gameLogic.board.getElementsByTagName("tr").length;
-		if (gameLogic.stepCount === 1){
+		if (gameLogic.stepCount === 1){ // Первые два  хода компьютера случайные
 			gameLogic.randomStep(count);
 			return;
 		}
-		if (gameLogic.checkPlayerStepInRow(count)){
-			return;
-		}
-		if (gameLogic.checkPlayerStepInCells(count)){
-			return;
-		}
-		gameLogic.checkPlayerStepInDiagonal(count);
 
-	}
-
-	randomStep(count){
-		var i = Math.floor(Math.random() * (count - 1) );
-		var j = Math.floor(Math.random() * (count - 1) );
-		if (!gameLogic.board.rows[i].cells[j].textContent){
-			gameLogic.board.rows[i].cells[j].innerHTML = "o";
-			gameLogic.board.rows[i].cells[j].classList.add("o");
-		}
-		else {
-			i = Math.floor(Math.random() * (count - 1) );
-			j = Math.floor(Math.random() * (count - 1) );
-			gameLogic.computerStep(i,j);
-		}
-	}
-
-	checkPlayerStepInDiagonal(count){
 		var number_x_elements = 0;
-		for (i = 0; i <count; i++){
-			if (gameLogic.board.rows[i].cells[i].innerHTML === "x"){
-				number_x_elements++;
-			}
-			if (number_x_elements === 2){
-				for (i = 0; i <count; i++){
-					if (!gameLogic.board.rows[i].cells[i].textContent){
-						gameLogic.board.rows[i].cells[i].innerHTML = "o";
-						gameLogic.board.rows[i].cells[i].classList.add("o");
-						number_x_elements = 0;
-						return true;
-					}
-
-				}
-			}
-		}
-		var i = 0;
-		number_x_elements = 0;
-		for (var j = count - 1; j >= 0; j--){
-			if (gameLogic.board.rows[i].cells[j].innerHTML === "x"){
-				number_x_elements++;
-			}
-			if (number_x_elements === 2){
-				i = 0;
-				for (j = count - 1; j >=0; j--){
-					if (!gameLogic.board.rows[i].cells[j].textContent){
-						gameLogic.board.rows[i].cells[j].innerHTML = "o";
-						gameLogic.board.rows[i].cells[j].classList.add("o");
-						number_x_elements = 0;
-						return true;
-					}
-					i++;
-				}
-			}
-			i++;
-		}
-		return false;
-	}
-
-	checkPlayerStepInRow(count){
-		for(var i = 0; i < count; i++){
-			var number_x_elements = 0;
-			var number_o_elements = 0;
+		var number_o_elements = 0;
+		var toElement = null;
+		// Проход по строкам
+		for(var i =0; i < count; i++){
+			if (toElement != null)
+				break;
 			for(var j = 0; j < count; j++){
+				if(gameLogic.board.rows[i].cells[j].innerHTML === "x") {
+					number_x_elements++; // Считаем сколько подряд крестиков
+				}
+				if(gameLogic.board.rows[i].cells[j].innerHTML === "o") {
+					number_o_elements++; // Считаем сколько подряд ноликов
+				}
+				if (number_o_elements === 2){ //Проверяем может ли компьютер сделать победный ход
+					var itemsInRow = false;
+					for(var k = 0; k < count; k++){ // Проверяем идут ли нолики подряд
+						if (gameLogic.board.rows[i].cells[k].textContent === "o")
+							itemsInRow = true;
+						else if (gameLogic.board.rows[i].cells[k].textContent === "x")
+							itemsInRow = false;
+					}
+					if (itemsInRow){ // Если нолики идут подряд, то можно сделать победный ход
+						for(var k = 0; k < count; k++){
+							if (!gameLogic.board.rows[i].cells[k].textContent){
+								toElement = gameLogic.board.rows[i].cells[k]; //Сохраняем ячейку
+							}
+						}
+					}
+				}
+				if (number_x_elements === 2){ // Проверка на то может ли игрок сделать победный ход
+					for(var k = 0; k < count; k++){ // Ищем ячейку в которую игрок может сделать победный ход
+						if (toElement === null){
+							if (!gameLogic.board.rows[i].cells[k].textContent)
+								toElement = gameLogic.board.rows[i].cells[k];
+						}
+					}
+				}
+			}
+			number_x_elements = 0;
+			number_o_elements = 0;
+		}
+		// Обнуляем счетчики для следующей итерации
+		number_x_elements = 0;
+		number_o_elements = 0;
+		// Проход по стоблцам
+		for(var j =0; j < count; j++){
+			for(var i = 0; i < count; i++){
 				if(gameLogic.board.rows[i].cells[j].innerHTML === "x") {
 					number_x_elements++;
 				}
 				if(gameLogic.board.rows[i].cells[j].innerHTML === "o") {
 					number_o_elements++;
 				}
-				if (number_x_elements === 2){
+				if (number_o_elements === 2){
+					var itemsInRow = false;
 					for(var k = 0; k < count; k++){
-						if (!gameLogic.board.rows[i].cells[k].textContent){
-							gameLogic.board.rows[i].cells[k].innerHTML = "o";
-							gameLogic.board.rows[i].cells[k].classList.add("o");
-							return true;
+						if (gameLogic.board.rows[k].cells[j].textContent === "o")
+							itemsInRow = true;
+						else if (gameLogic.board.rows[k].cells[j].textContent === "x")
+							itemsInRow = false;
+					}
+					if (itemsInRow){
+						for(var k = 0; k < count; k++){
+							if (!gameLogic.board.rows[k].cells[j].textContent){
+									toElement = gameLogic.board.rows[k].cells[j];
+							}
 						}
 					}
-				}
-			}
-		}
-		return false;
-	}
-
-	checkPlayerStepInCells(count){
-		for(var i = 0; i < count; i++){
-			var number_x_elements = 0;
-			var number_o_elements = 0;
-			for(var j = 0; j < count; j++){
-				if(gameLogic.board.rows[j].cells[i].innerHTML === "x") {
-					number_x_elements++;
-				}
-				if(gameLogic.board.rows[j].cells[i].innerHTML === "o") {
-					number_o_elements++;
 				}
 				if (number_x_elements === 2){
 					for(var k = 0; k < count; k++){
 						if (!gameLogic.board.rows[k].cells[i].textContent){
-							gameLogic.board.rows[k].cells[i].innerHTML = "o";
-							gameLogic.board.rows[k].cells[i].classList.add("o");
-							return true;
+							if (toElement === null){
+								if (!gameLogic.board.rows[k].cells[j].textContent)
+									toElement = gameLogic.board.rows[k].cells[j];
+							}
 						}
 					}
 				}
 			}
+			if (toElement != null)
+				break;
+			number_x_elements = 0;
+			number_o_elements = 0;
 		}
-		return false;
+		number_x_elements = 0;
+		number_o_elements = 0;
+		//Проход по главной диагонали
+		for (i = 0; i <count; i++){
+			if (toElement !== null)
+				break;
+			if (gameLogic.board.rows[i].cells[i].innerHTML === "x"){
+				number_x_elements++;
+			}
+			if (gameLogic.board.rows[i].cells[i].innerHTML === "o"){
+				number_o_elements++;
+			}
+
+			if (number_o_elements === 2){
+				var itemsInRow = false;
+				for(var k = 0; k < count; k++){
+					if (gameLogic.board.rows[k].cells[k].textContent === "o")
+						itemsInRow = true;
+					else if (gameLogic.board.rows[k].cells[k].textContent === "x")
+						itemsInRow = false;
+				}
+				if (itemsInRow){
+					for(var k = 0; k < count; k++){
+						if (!gameLogic.board.rows[i].cells[i].textContent){
+								toElement = gameLogic.board.rows[i].cells[i];
+						}
+					}
+				}
+			}
+			if (number_x_elements === 2){
+				for (i = 0; i <count; i++){
+						if (!gameLogic.board.rows[i].cells[i].textContent){
+							toElement = gameLogic.board.rows[i].cells[i];
+						}
+
+
+				}
+			}
+
+		}
+		number_x_elements = 0;
+		number_o_elements = 0;
+		var i = 0;
+		for (var j = count - 1; j >= 0; j--){
+			if (toElement !== null)
+				break;
+			if (gameLogic.board.rows[i].cells[j].innerHTML === "x"){
+				number_x_elements++;
+			}
+			if (gameLogic.board.rows[i].cells[j].innerHTML === "x"){
+				number_o_elements++;
+			}
+			if (number_o_elements === 2){
+				var itemsInRow = false;
+				i = 0;
+				for (j = count - 1; j >=0; j--){
+					if (gameLogic.board.rows[i].cells[j].textContent === "o")
+						itemsInRow = true;
+					else if (gameLogic.board.rows[i].cells[j].textContent === "x")
+						itemsInRow = false;
+					i++;
+				}
+				if (itemsInRow){
+					for(var j = 0; j >= 0; j--){
+						if (!gameLogic.board.rows[i].cells[j].textContent){
+							toElement = gameLogic.board.rows[i].cells[j];
+						}
+					}
+				}
+			}
+			if (number_x_elements === 2){
+				i = 0;
+				for (j = count - 1; j >=0; j--){
+					if (!gameLogic.board.rows[i].cells[j].textContent){
+						toElement = gameLogic.board.rows[i].cells[j];
+					}
+					i++;
+				}
+			}
+			i++;
+		}
+		//Если надо "обороняться" или "аттокавать", то обороняемся или аттакуем, иначе ищем свободную клетку для хода
+		if (toElement != null){
+			toElement.innerHTML = "o";
+			toElement.classList.add("o");
+		}else{
+			for(var i =0; i <count; i++){
+				for(var j =0; j<count; j++){
+					if (!gameLogic.board.rows[i].cells[j].textContent){
+						gameLogic.board.rows[i].cells[j].innerHTML = "o";
+						gameLogic.board.rows[i].cells[j].classList.add("o");
+						return;
+					}
+				}
+			}
+		}
 	}
 
+	// Случайный ход
+	randomStep(count){
+		var i = Math.floor(Math.random() * (count - 1) );
+		var j = Math.floor(Math.random() * (count - 1) );
+		while (true){
+			if (!gameLogic.board.rows[i].cells[j].textContent){
+				gameLogic.board.rows[i].cells[j].innerHTML = "o";
+				gameLogic.board.rows[i].cells[j].classList.add("o");
+				break;
+			}
+			else {
+				i = Math.floor(Math.random() * (count - 1) );
+				j = Math.floor(Math.random() * (count - 1) );
+			}
+		}
+
+	}
+
+	// Смена игрока
 	changePlayer(){
 		gameLogic.player === "x" ? (gameLogic.player = "o") : (gameLogic.player = "x");
 	}
 
+	// Проверка исхода партии
 	checkWin(){
 		var flag;
 		gameLogic.stepCount++;
@@ -185,7 +275,7 @@ class GameLogic{
 				alert(winString);
 				gameLogic.removeEvent();
 				gameLogic.createTable();
-				return winString;
+				return true;
 			}
 
 		}
@@ -193,10 +283,12 @@ class GameLogic{
 			alert("Ничья");
 			gameLogic.removeEvent();
 			gameLogic.createTable();
-			return "Ничья";
+			return true;
 		}
+		return false;
 	}
 
+	// Создание и добавление нового элемента в историю игр
 	createTable(){
 		var history = document.getElementById("history");
 		var tableHistory = document.createElement('table');
@@ -214,13 +306,14 @@ class GameLogic{
 		history.appendChild(tableHistory);
 	}
 
+	// Удаления функций по нажатию на <td>
 	removeEvent(){
 		var elements = gameLogic.board.getElementsByTagName("td");
 		for (var i = 0; i < elements.length; i++) {
 			elements[i].removeEventListener('click',gameLogic.currentStep);
 		}
 	}
-
+	// Очистка игрового поля
 	removeBoard(){
 		var elements = gameLogic.board.getElementsByTagName("td");
 		for (var i = 0; i < elements.length; i++) {
