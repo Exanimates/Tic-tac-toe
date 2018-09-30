@@ -32,7 +32,7 @@ class GameLogic{
 	// Псевдо ИИ
 	computerStep(){
 		var count = gameLogic.board.getElementsByTagName("tr").length;
-		if (gameLogic.stepCount === 1){ // Первые два  хода компьютера случайные
+		if (gameLogic.stepCount === 1){ // Первые ход компьютер ходит случайно
 			gameLogic.randomStep(count);
 			return;
 		}
@@ -246,16 +246,16 @@ class GameLogic{
 
 	// Проверка исхода партии
 	checkWin(){
-		var flag;
-		gameLogic.stepCount++;
-		var countItems = 0;
+		var flag; //Маркер победы
+		gameLogic.stepCount++; //Увеличиваем кол-во шагов
+		var countItems = 0;// кол-во элементов на поле
 		var count = gameLogic.board.getElementsByTagName("tr").length;
 		for(var i = 0; i < count; i++){
 			var winRow = true,
 				winColumn = true,
 				winLeftTop = true,
 				winLeftBottom = true;
-
+			//Обходим таблицу и проверяем не сделал ли игрок или компьютер победных ход
 			for(var k = 0; k < count; k++){
 				if(gameLogic.board.rows[i].cells[k].textContent) countItems++;
 				if(gameLogic.board.rows[i].cells[k].innerHTML !== gameLogic.player) winRow = false;
@@ -263,7 +263,7 @@ class GameLogic{
 				if(gameLogic.board.rows[k].cells[k].innerHTML !== gameLogic.player) winLeftTop = false;
 				if(gameLogic.board.rows[count-1-k].cells[k].innerHTML !== gameLogic.player) winLeftBottom = false;
 			}
-
+			//Если есть хоть одна победная комбинация, то выводим результаты и обновляем данные
 			if(winRow || winColumn || winLeftTop || winLeftBottom){
 				flag = true;
 				const winString = gameLogic.player === "o" ? "Вы проиграли" : "Вы победили";
@@ -279,6 +279,7 @@ class GameLogic{
 			}
 
 		}
+		//Если победной комбинации не обнаружено, а все ячейки заняты, то ничья
 		if (!flag && (countItems === count * count)){
 			alert("Ничья");
 			gameLogic.removeEvent();
