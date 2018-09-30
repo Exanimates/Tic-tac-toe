@@ -2,9 +2,12 @@ class GameLogic{
 
 	constructor(){
 		this.board = document.getElementById("board");
-		this.message = document.getElementById("message");
+		this.compCountHtml = document.getElementById("computer-count");
+		this.playrCountHtml = document.getElementById("player-count");
 		this.player = "x";
 		this.stepCount = 0;
+		this.compCount = 0;
+		this.playerCount = 0;
 	}
 
 	currentStep() {
