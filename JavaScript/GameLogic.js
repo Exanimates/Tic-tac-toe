@@ -16,26 +16,26 @@ class GameLogic{
 			if (gameLogic.player === "x")
 				this.innerText = gameLogic.player;
 			this.classList.add(gameLogic.player);
-			var checkWin = gameLogic.checkWin();
+			var checkWin = GameLogic.checkWin();
 			if( checkWin){
 				alert("Вы победили");
 				gameLogic.playrCountHtml.innerText = Number(gameLogic.playrCountHtml.innerText) + 1;
-				gameLogic.removeEvent();
-				gameLogic.createTable();
+				GameLogic.removeEvent();
+				GameLogic.createTable();
 				return;
 			}else if (checkWin === false){
 				return;
 			}
 			//Ход компьютера
-			gameLogic.changePlayer();
+			GameLogic.changePlayer();
 			if (gameLogic.player === "o"){
-				gameLogic.computerStep();
+				GameLogic.computerStep();
 
-				if(gameLogic.checkWin()){
+				if(GameLogic.checkWin()){
 					alert("Вы проиграли");
 					gameLogic.compCountHtml.innerText = Number(gameLogic.compCountHtml.innerText) + 1;
-					gameLogic.removeEvent();
-					gameLogic.createTable();
+					GameLogic.removeEvent();
+					GameLogic.createTable();
 					return;
 				}
 				gameLogic.player = "x";
@@ -43,15 +43,15 @@ class GameLogic{
 		}
 	}
 	// Псевдо ИИ
-	computerStep(){
+	static computerStep(){
 		let j;
 		let i;
-		var count = gameLogic.board.getElementsByTagName("tr").length;
+		const count = gameLogic.board.getElementsByTagName("tr").length;
 		if (gameLogic.stepCount === 1){ // Первые ход компьютер ходит случайно
-			gameLogic.randomStep(count);
+			GameLogic.randomStep(count);
 			return;
 		}
-		var tx = null,ty = null,tp = 0;
+		let tx = null, ty = null, tp = 0;
 		let lC;
 		for (i = 0; i <= count - 1; i++){
 			for (j = 0; j <= count - 1; j++){
@@ -59,7 +59,7 @@ class GameLogic{
 				if (!lC.textContent){
 					gameLogic.board.rows[i].cells[j].innerHTML = 'o';
 					gameLogic.player = "o";
-					if (gameLogic.checkWin()){
+					if (GameLogic.checkWin()){
 						lC = gameLogic.board.rows[i].cells[j].innerHTML;
 						tp = 3;
 						tx = i;
@@ -68,7 +68,7 @@ class GameLogic{
 					}
 					gameLogic.board.rows[i].cells[j].innerHTML = 'x';
 					gameLogic.player = "x";
-					if (gameLogic.checkWin()){
+					if (GameLogic.checkWin()){
 						lC = gameLogic.board.rows[i].cells[j].innerHTML;
 						tx = i;
 						ty = j;
@@ -97,9 +97,9 @@ class GameLogic{
 	}
 
 	// Случайный ход
-	randomStep(count){
-		var i = Math.floor(Math.random() * (count - 1) );
-		var j = Math.floor(Math.random() * (count - 1) );
+	static randomStep(count){
+		let i = Math.floor(Math.random() * (count - 1));
+		let j = Math.floor(Math.random() * (count - 1));
 		while (true){
 			if (!gameLogic.board.rows[i].cells[j].textContent){
 				gameLogic.board.rows[i].cells[j].innerHTML = "o";
@@ -115,15 +115,15 @@ class GameLogic{
 	}
 
 	// Смена игрока
-	changePlayer(){
+	static changePlayer(){
 		gameLogic.player === "x" ? (gameLogic.player = "o") : (gameLogic.player = "x");
 	}
 
 	// Проверка исхода партии
-	checkWin(){
-		var flag; //Маркер победы
-		var countItems = 0;// кол-во элементов на поле
-		var count = gameLogic.board.getElementsByTagName("tr").length;
+	static checkWin(){
+		let flag; //Маркер победы
+		let countItems = 0;// кол-во элементов на поле
+		const count = gameLogic.board.getElementsByTagName("tr").length;
 		for(var i = 0; i < count; i++){
 			var winRow = true,
 				winColumn = true,
@@ -147,19 +147,19 @@ class GameLogic{
 		//Если победной комбинации не обнаружено, а все ячейки заняты, то ничья
 		if (!flag && (countItems === count * count)){
 			alert("Ничья");
-			gameLogic.removeEvent();
-			gameLogic.createTable();
+			GameLogic.removeEvent();
+			GameLogic.createTable();
 			return false;
 		}
 	}
 
 	// Создание и добавление нового элемента в историю игр
-	createTable(){
+	static createTable(){
 		var history = document.getElementById("history");
 		var tableHistory = document.createElement('table');
 		for (var i = 0; i < 3; i++)
 		{
-			var row = document.createElement("tr");
+			const row = document.createElement("tr");
 			for(var j = 0; j < 3; j++){
 				var td = document.createElement("td");
 				td.innerHTML = gameLogic.board.rows[i].cells[j].innerHTML;
@@ -172,16 +172,16 @@ class GameLogic{
 	}
 
 	// Удаления функций по нажатию на <td>
-	removeEvent(){
+	static removeEvent(){
 		const elements = gameLogic.board.getElementsByTagName("td");
 		for (var i = 0; i < elements.length; i++) {
 			elements[i].removeEventListener('click',gameLogic.currentStep);
 		}
 	}
 	// Очистка игрового поля
-	removeBoard(){
+	static removeBoard(){
 		const elements = gameLogic.board.getElementsByTagName("td");
-		for (var i = 0; i < elements.length; i++) {
+		for (let i = 0; i < elements.length; i++) {
 			elements[i].innerHTML = '';
 			elements[i].classList.remove("x");
 			elements[i].classList.remove("o");
