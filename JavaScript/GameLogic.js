@@ -17,13 +17,13 @@ class GameLogic{
 				this.innerText = gameLogic.player;
 			this.classList.add(gameLogic.player);
 			var checkWin = GameLogic.checkWin();
-			if( checkWin){
+			if( checkWin){ //Если победили, то обновляем данные и выходим из функции
 				alert("Вы победили");
 				gameLogic.playrCountHtml.innerText = Number(gameLogic.playrCountHtml.innerText) + 1;
 				GameLogic.removeEvent();
 				GameLogic.createTable();
 				return;
-			}else if (checkWin === false){
+			}else if (checkWin === false){ //Если ничья, то выходим из функции
 				return;
 			}
 			//Ход компьютера
