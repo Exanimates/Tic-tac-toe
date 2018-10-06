@@ -78,6 +78,7 @@ header a{
 	display: none;
 	align-items: center;
 	justify-content: center;
+	border-top:2px solid white;
 	flex-wrap: wrap;
 	margin-top: 20px;
 	height: 60%;
