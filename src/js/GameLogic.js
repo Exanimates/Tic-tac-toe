@@ -44,7 +44,7 @@ class GameLogic
 				if(this.checkWin())
 				{
 					this.compCountHtml.innerText = Number(this.compCountHtml.innerText) + 1;
-					swal({title: "Вы проиграли!",icon: "error",button: "Ok",});
+					swal({title: "Вы проиграли!",icon: "warning",button: "Ok",});
 					this.removeEvent();
 					this.createTable();
 					return;
