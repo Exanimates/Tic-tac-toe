@@ -1,65 +1,54 @@
 <!DOCTYPE html>
 <html lang="Ru">
   <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<title>Tic tac toe</title>
-	<link rel="stylesheet" href="./CSS/index.css">
+	<link rel="stylesheet" href="src/css/index.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
-  <body>
-	<header>
-		<span>Игра крестики-нолики</span>
-	</header>
+	<body>
+		<header>
+			<span>Игра крестики-нолики</span>
+		</header>
 
-	<div class="main-block">
-		<!--<div class="titles">
-			<span class="player-title" >Компьютер: O</span>
-			<span class="player-title" >Игрок: X</span>
-		</div>-->
-
-		<div class="step-info">
-			<span class="player-title">Счет</span>
-			<span class="player-title">Компьютер:<span id="computer-count">0</span></span>
-			<span class="player-title">Вы:<span id="player-count">0</span></span>
+		<div class="main-block">
+			<div class="step-info">
+				<span class="player-title">Счет</span>
+				<span class="player-title">Компьютер:<span id="computer-count">0</span></span>
+				<span class="player-title">Вы:<span id="player-count">0</span></span>
+			</div>
 		</div>
-		<!--<div >
-			<span  >Компьютер:</span>
-			<span >Вы:</span>
-		</div>-->
+
+		<div class="game">
+			<table id="board">
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="showHistory">
+			<button id="reset-game" class="buttons">Очистить игровое поле</button>
+			<button class="buttons" id="buttonShowHistory" >Показать историю</button>
+		</div>
+
+	<div id="history">
+
 	</div>
-
-	<div class="game">
-		<table id="board">
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>
-
-	</div>
-
-
-
-	<div class="showHistory">
-		<button id="reset-game" class="buttons">Очистить игровое поле</button>
-		<button class="buttons" id="buttonShowHistory" >Показать историю</button>
-	</div>
-   <div id="history">
-
-   </div>
-  </body>
-
-  <script src="JavaScript/GameLogic.js"></script>
-  <script src="JavaScript/index.js"></script>
+	</body>
+  <script src="src/js/GameLogic.js"></script>
+  <script src="src/js/index.js"></script>
 </html>
