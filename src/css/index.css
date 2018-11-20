@@ -104,15 +104,12 @@ header a{
     -o-transition:all linear 0.3s;
     transition:all linear 0.3s
 }
+.buttons:hover{
+	background-color: #ccc;
+}
 #message{
 	color: white;
 	text-align: center;
-}
-#reset-game{
-
-}
-#reset-game:hover{
-    background-color:#ccc
 }
 table {
 	width: 250px;
