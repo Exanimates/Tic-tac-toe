@@ -4,6 +4,7 @@
   "description": "- Формулировка задачи",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.16.4",
     "sweetalert": "^2.1.2"
   },
   "scripts": {
@@ -18,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/Exanimates/Tic-tac-toe/issues"
   },
-  "homepage": "https://github.com/Exanimates/Tic-tac-toe#readme"
+  "homepage": "https://github.com/Exanimates/Tic-tac-toe#readme",
+  "devDependencies": {}
 }

@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="Ru">
   <head>
-	<meta charset="UTF-8">
-	<title>Tic tac toe</title>
-	<link rel="stylesheet" href="src/css/index.css">
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<meta charset="UTF-8">
+		<title>Tic tac toe</title>
+		<link rel="stylesheet" href="src/css/index.css">
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+  <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+		<script>
+			mocha.setup('bdd');
+		</script>
+
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+  <!-- в chai есть много всего, выносим assert в глобальную область -->
+		<script>
+			var assert = chai.assert;
+		</script>
+		<script>
+			var assert = chai.assert;
+		</script>
   </head>
 	<body>
 		<header>
@@ -39,16 +54,21 @@
 				</tr>
 			</table>
 		</div>
-
+		<script type ="module" src="src/test/test.js"></script>
+	
+		<div id="mocha"></div>
+	
+		<script>
+			mocha.run();
+		</script>
 		<div class="showHistory">
 			<button id="reset-game" class="buttons">Очистить игровое поле</button>
 			<button class="buttons" id="buttonShowHistory" >Показать историю</button>
 		</div>
 
 		<div id="history">
-
 		</div>
 	</body>
-  <script src="src/js/GameLogic.js"></script>
-  <script src="src/js/index.js"></script>
+  <!-- <script src="src/js/GameLogic.js"></script> -->
+  <script src="src/js/index.js" type="module"></script>
 </html>
