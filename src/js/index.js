@@ -1,6 +1,6 @@
-import MainLogic from './GameLogic/MainLogic.js';
+import GameLogic from './Logic/GameLogic.js';
 
-const gameLogic = new MainLogic();
+const gameLogic = new GameLogic();
 
 //На каждый элемент игрового поля вешаем функцию хода
 var articles = document.getElementsByTagName("td");

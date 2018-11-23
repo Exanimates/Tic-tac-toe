@@ -1,4 +1,4 @@
-export default class MainLogic
+export default class GameLogic
 {
 	constructor()
 	{
