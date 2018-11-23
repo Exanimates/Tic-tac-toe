@@ -1,9 +1,10 @@
 import GameLogic from "../js/Logic/GameLogic.js";
 import SimpleGameObject from "../js/Players/SimpleGameObject.js";
 import Computer from "../js/Players/Computer.js";
+import GameData from "../js/Data/GameData.js";
 
 describe("Test game logic", function() {
-    const gameLogic = new GameLogic();
+    const gameLogic = new GameLogic(GameData);
 
     it("Check function change player ", ()=> {
       //Если передаем Computer, то должен вернутся SimpleGameObject
