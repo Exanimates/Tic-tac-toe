@@ -1,6 +1,6 @@
 import GameLogic from "../js/GameLogic.js";
 
-describe("Win check", function() {
+describe("Test game logic", function() {
     const gameLogic = new GameLogic();
     it("Check 'x' win horizontal ", ()=> {
       assert.equal(gameLogic.checkWin([
