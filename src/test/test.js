@@ -1,4 +1,4 @@
-import GameLogic from "../js/GameLogic.js";
+import GameLogic from "../js/Logic/GameLogic.js";
 import SimpleGameObject from "../js/Players/SimpleGameObject.js";
 import Computer from "../js/Players/Computer.js";
 
