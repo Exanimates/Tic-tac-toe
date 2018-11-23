@@ -35,10 +35,12 @@ export default class View
 			elements[i].parentNode.replaceChild(elClone, elements[i]);
 		}
 	}
+
 	// Очисткая игрового поля
-	clearBoard(board)
+	static clearBoard(board)
 	{
 		const elements = board.getElementsByTagName("td");
+		this.gameLogic.stepCount = 0;
 		for (let i = 0; i < elements.length; i++)
 		{
 			elements[i].innerHTML = "";
@@ -48,7 +50,5 @@ export default class View
 				this.gameLogic.currentStep(elements[i]);
 			});
 		}
-		this.player = "x";
-		this.stepCount = 0;
 	}
 }
