@@ -10,7 +10,7 @@ describe("Test game logic", function() {
       const computer = new Computer("o");
 
       assert.equal(gameLogic.changePlayer(new SimpleGameObject("x")), computer instanceof Computer);
-      
+
       //Если передаем SimpleGameObject, то должен вернутся Computer
       const simpleGameObject = new SimpleGameObject("x");
 
@@ -22,17 +22,17 @@ describe("Test game logic", function() {
         ["x","x","x"], 
         ["","",""],
         ["","",""]
-        ]), true);
+        ], "x"), true);
       assert.equal(gameLogic.checkWin([
         ["","",""], 
         ["x","x","x"],
         ["","",""]
-        ]), true);
+        ], "x"), true);
       assert.equal(gameLogic.checkWin([
         ["","",""], 
         ["","",""],
         ["x","x","x"]
-        ]), true);
+        ], "x"), true);
     });
 
     it("Check 'x' win vertical ", ()=> {
@@ -40,17 +40,17 @@ describe("Test game logic", function() {
         ["x","",""], 
         ["x","",""],
         ["x","",""]
-        ]), true);
+        ], "x"), true);
       assert.equal(gameLogic.checkWin([
         ["","x",""], 
         ["","x",""],
         ["","x",""]
-        ]), true);
+        ], "x"), true);
       assert.equal(gameLogic.checkWin([
         ["","","x"], 
         ["","","x"],
         ["","","x"]
-        ]), true);
+        ],"x"), true);
     });
   
     it("Check 'o' win horizontal", ()=> {
@@ -58,17 +58,17 @@ describe("Test game logic", function() {
         ["o","o","o"], 
         ["","",""],
         ["","",""]
-      ]), true);
+      ], "o"), true);
       assert.equal(gameLogic.checkWin([
         ["","",""], 
         ["o","o","o"],
         ["","",""]
-      ]), true);
+      ], "o"), true);
       assert.equal(gameLogic.checkWin([
         ["","",""], 
         ["","",""],
         ["o","o","o"]
-      ]), true);
+      ], "o"), true);
     });
 
     it("Check 'x' diagonal", ()=> {
@@ -76,12 +76,12 @@ describe("Test game logic", function() {
         ["x","o","o"], 
         ["o","x","o"],
         ["o","o","x"]
-      ]), true);
+      ], "x"), true);
       assert.equal(gameLogic.checkWin([
         ["o","o","x"], 
         ["o","x","o"],
         ["x","o","o"]
-      ]), true);
+      ], "x"), true);
     });
 
     it("Check 'o' diagonal", function() {
@@ -89,12 +89,12 @@ describe("Test game logic", function() {
         ["o","x","x"], 
         ["x","o","x"],
         ["x","x","o"]
-      ]), true);
+      ], "o"), true);
       assert.equal(gameLogic.checkWin([
         ["x","x","o"], 
         ["x","o","x"],
         ["o","o","x"]
-      ]), true);
+      ], "o"), true);
     });
 
   });
