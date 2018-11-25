@@ -40,15 +40,11 @@ export default class View
 	static clearBoard(board)
 	{
 		const elements = board.getElementsByTagName("td");
-		this.gameLogic.stepCount = 0;
 		for (let i = 0; i < elements.length; i++)
 		{
 			elements[i].innerHTML = "";
 			elements[i].classList.remove("x");
 			elements[i].classList.remove("o");
-			elements[i].addEventListener("click",()=>{
-				this.gameLogic.currentStep(elements[i]);
-			});
 		}
 	}
 }
