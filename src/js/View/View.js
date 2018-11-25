@@ -1,4 +1,4 @@
-export default class View
+class View
 {
      constructor(gameLogic)
      {

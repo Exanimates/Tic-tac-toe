@@ -1,6 +1,7 @@
-export default class SimpleGameObject
+class SimpleGameObject
 {
-     constructor(icon){
+     constructor(icon)
+     {
          this.icon = icon;
      }
 

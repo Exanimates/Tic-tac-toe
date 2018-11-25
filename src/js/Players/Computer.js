@@ -1,6 +1,4 @@
-import SimpleGameObject from "./SimpleGameObject.js"
-
-export default class Computer extends SimpleGameObject
+class Computer extends SimpleGameObject
 {
     constructor(icon)
     {

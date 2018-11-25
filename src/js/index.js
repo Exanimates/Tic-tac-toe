@@ -1,5 +1,3 @@
-import GameLogic from './Logic/GameLogic.js';
-
 const gameLogic = new GameLogic();
 
 //На каждый элемент игрового поля вешаем функцию хода
