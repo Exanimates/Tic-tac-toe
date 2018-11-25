@@ -5,6 +5,20 @@ export default class View
          this.gameLogic = gameLogic;
      }
 
+	updateUiAfterWin(html_component, message, alert)
+	{
+		html_component.innerText = Number(html_component.innerText) + 1;
+		swal({title: message, icon: alert});
+		this.removeEvent(this.gameLogic.board);
+		this.addElementToHistory(this.gameLogic.board);
+	}
+
+	updateUiAfterTie(message)
+	{
+		swal({title: message});
+		this.removeEvent(this.gameLogic.board);
+		this.addElementToHistory(this.gameLogic.board);
+	}
 
 	 // Добавление нового элемента в историю игр
 	 addElementToHistory( board )
