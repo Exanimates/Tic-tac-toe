@@ -69,4 +69,19 @@ export default class Computer extends SimpleGameObject
 			board.rows[tx].cells[ty].classList.add("o");
 		}
 	}
+
+	// Случайный ход
+	randomStep( count, board )
+	{
+		let i = Math.floor(Math.random() * (count));
+		let j = Math.floor(Math.random() * (count));
+
+		while (board.rows[i].cells[j].textContent)
+		{	
+			i = Math.floor(Math.random() * (count) );
+			j = Math.floor(Math.random() * (count) );
+		}
+		board.rows[i].cells[j].innerHTML = "o";
+		board.rows[i].cells[j].classList.add("o");
+	}
 }
