@@ -5,25 +5,14 @@ export default class View
          this.gameLogic = gameLogic;
      }
 
-     // Добавление нового элемента в историю игр
-	createTable(lengthBoard)
-	{
-		var historyBlock = document.getElementById("history");
-		var elementOfHistory = document.createElement("table");
-		for (let i = 0; i < lengthBoard; i++)
-		{
-			const row = document.createElement("tr");
-			for(let j = 0; j < lengthBoard; j++)
-			{
-				var td = document.createElement("td");
-				td.innerHTML = this.board.rows[i].cells[j].innerHTML;
-				td.classList = this.board.rows[i].cells[j].classList;
-				row.appendChild(td);
-			}
-			elementOfHistory.appendChild(row);
-		}
-		historyBlock.appendChild(elementOfHistory);
-	}
+
+	 // Добавление нового элемента в историю игр
+	 addElementToHistory( board )
+	 {
+		 var historyBlock = document.getElementById("history");
+		 var elementOfHistory = document.getElementById("board").cloneNode(true);
+		 historyBlock.appendChild(elementOfHistory);
+	 }
 
 	// Удаления событий повешенных на ячейке игрового поля
 	removeEvent(board)
