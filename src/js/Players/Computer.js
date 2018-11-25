@@ -7,38 +7,35 @@ export default class Computer extends SimpleGameObject
         super(icon);
     }
 
-    step(board, checkWin, simpleGameObject) 
+	step( board, checkWin, simpleGameObject, stepCount ) 
 	{
 		const count = board.getElementsByTagName("tr").length;
+
 		// Первые ход компьютера случайный
 		if (stepCount === 1)
 		{ 
-			randomStep(count);
+			this.randomStep( count , board );
 			return;
 		}
-        let tx, ty; 
-        let tp = 0;
-		let lC;
+		let tx, ty; 
+		let tp = 0;
 		for (let i = 0; i <= count - 1; i++)
 		{
 			for (let j = 0; j <= count - 1; j++)
 			{
-				lC = board.rows[i].cells[j];
-				if (!lC.textContent)
+				if ( !board.rows[i].cells[j].textContent)
 				{
 					board.rows[i].cells[j].innerHTML = this.icon;
-					if (checkWin(this.icon))
+					if ( checkWin( board, this ) )
 					{
-						lC = board.rows[i].cells[j].innerHTML;
 						tp = 3;
 						tx = i;
 						ty = j;
 						break;
 					}
 					board.rows[i].cells[j].innerHTML = simpleGameObject.icon;
-					if (checkWin(simpleGameObject.icon))
+					if ( checkWin( board, simpleGameObject ) )
 					{
-						lC = board.rows[i].cells[j].innerHTML;
 						tx = i;
 						ty = j;
 						tp = 2;
@@ -49,20 +46,10 @@ export default class Computer extends SimpleGameObject
 			if (tp === 3)
 				break;
 		}
-		if (tp === 0)
+		if ( tp === 0 )
 		{
-			for (let i = 0; i < count; i++)
-			{
-				for (let j = 0; j < count; j++)
-				{
-					if (!board.rows[i].cells[j].textContent)
-					{
-						board.rows[i].cells[j].innerHTML = this.icon;
-						board.rows[i].cells[j].classList.add("o");
-						return;
-					}
-				}
-			}
+			this.randomStep( count, board );
+			return;
 		} else
 		{
 			board.rows[tx].cells[ty].innerHTML = this.icon;
