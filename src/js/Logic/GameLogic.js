@@ -9,9 +9,11 @@ class GameLogic
 		// Счет игрока
 		this.playerCountHtml = document.getElementById("player-count"); 
 
+		// Инициализируем игровые объекты
 		this.computer = new Computer("o");
 		this.humanPlayer = new SimpleGameObject("x");
 
+		// Подключаем View
 		this.view = new View(this);
 		this.stepCount = 0;
 	}
@@ -21,11 +23,9 @@ class GameLogic
 		// Проверка содержимого ячейки
 		if ( !cell.textContent ) 
 		{ 
-			this.stepCount++;
-
-			//Проверка исхода партии
+			// Ходим пользователем и проверяем повлиял ли его ход на исход партии
 			this.humanPlayer.step( cell );
-			//Проверка 
+			//Проверка исхода партии
 			if ( this.checkGameState( this.humanPlayer ) !== undefined )
 			{
 				return;
