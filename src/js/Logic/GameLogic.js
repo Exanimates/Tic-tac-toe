@@ -1,17 +1,15 @@
 class GameLogic {
 	constructor() {
-		// Игровое поле в виде таблицы
+		// Инициализация нужных HTML элементов
 		this.board = document.getElementById("board"); 
-		// Счет компьютера
 		this.compCountHtml = document.getElementById("computer-count"); 
-		// Счет игрока
 		this.playerCountHtml = document.getElementById("player-count"); 
 
 		// Инициализируем игровые объекты
 		this.computer = new Computer("o");
 		this.humanPlayer = new SimpleGameObject("x");
 
-		// Подключаем View
+		// Подключаем View с логикой обработки UI
 		this.view = new View(this);
 	}
 	// Текущие нажатие на клетку
