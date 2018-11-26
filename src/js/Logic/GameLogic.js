@@ -17,42 +17,42 @@ class GameLogic
 		this.view = new View(this);
 	}
 	// Текущие нажатие на клетку
-	clickOnCell( cell ) 
+	clickOnCell(cell)
 	{
 		// Проверка содержимого ячейки
-		if ( !cell.textContent ) 
+		if (!cell.textContent)
 		{ 
 			// Ходим пользователем и проверяем повлиял ли его ход на исход партии
-			this.humanPlayer.step( cell );
+			this.humanPlayer.step(cell);
 			//Проверка исхода партии
-			if ( this.checkGameState( this.humanPlayer ) !== undefined )
+			if (this.checkGameState(this.humanPlayer) !== undefined)
 			{
 				return;
 			}
 			// Ходим компьютером и проверяем повлиял ли его ход на исход партии
-			this.computer.step( this.board, this.checkWin, this.humanPlayer );
-			this.checkGameState( this.computer );
+			this.computer.step(this.board, this.checkWin, this.humanPlayer);
+			this.checkGameState(this.computer);
 		}
 	}
 	// Проверка исхода партии
-	checkGameState( gameobject )
+	checkGameState(gameobject)
 	{
-		var win = this.checkWin( this.board, gameobject );
+		var win = this.checkWin(this.board,gameobject);
 		if( win )
 		{
-			if ( gameobject instanceof SimpleGameObject && !(gameobject instanceof Computer) )
+			if (gameobject instanceof SimpleGameObject && !(gameobject instanceof Computer))
 			{
 				this.view.updateUi( "Вы победили в партии", "success", this.playerCountHtml);
 			}
 
-			if ( gameobject instanceof Computer )
+			if (gameobject instanceof Computer)
 			{
 				this.view.updateUi( "Вы проиграли в партии", "warning", this.compCountHtml);
 			}
 
 			return true;	
 		}
-		else if ( win === false )
+		else if (win === false)
 		//Если ничья, то выходим из функции
 		{ 
 			this.view.updateUi("Ничья");
@@ -61,7 +61,7 @@ class GameLogic
 	}
 
 	// Проверка на победных ход в партии
-	checkWin( board, player )
+	checkWin(board, player)
 	{
 		//Маркер победы
 		let flag; 

@@ -21,7 +21,7 @@ class View
 	}
 
 	 // Добавление нового элемента в историю игр
-	 addElementToHistory( board )
+	 addElementToHistory(board)
 	 {
 		 var historyBlock = document.getElementById("history");
 		 var elementOfHistory = board.cloneNode(true);
