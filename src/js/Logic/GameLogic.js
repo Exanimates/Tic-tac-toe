@@ -45,7 +45,7 @@ class GameLogic
 
 			if ( gameobject instanceof Computer )
 			{
-				this.view.updateUi( "Вы проиграли в партии", "error", this.compCountHtml);
+				this.view.updateUi( "Вы проиграли в партии", "warning", this.compCountHtml);
 			}
 
 			return true;	
