@@ -1,12 +1,9 @@
-class Computer extends SimpleGameObject
-{
-    constructor(icon)
-    {
-        super(icon);
-    }
+class Computer extends SimpleGameObject {
+	constructor(icon){
+		super(icon);
+	}
 
-	step(board, checkWin, simpleGameObject)
-	{
+	step(board, checkWin, simpleGameObject) {
 		const count = board.getElementsByTagName("tr").length;
 
 		// Приоритет хода.В зависмости от него либо обороняемся, либо атакуем 
@@ -14,17 +11,13 @@ class Computer extends SimpleGameObject
 		// Индексы ячейки, которую нужно заполнить в завсимсоти от приоритета
 		let px, py; 
 
-		for (let i = 0; i <= count - 1; i++)
-		{
-			for (let j = 0; j <= count - 1; j++)
-			{
-				if (!board.rows[i].cells[j].textContent)
-				{
+		for (let i = 0; i <= count - 1; i++) {
+			for (let j = 0; j <= count - 1; j++) {
+				if (!board.rows[i].cells[j].textContent) {
 					// Имитируем ход компьютера
 					board.rows[i].cells[j].innerHTML = this.icon;
 					// Если после хода компьютра выигрыш, то сохраняем индексы ячейки
-					if (checkWin(board, this))
-					{
+					if (checkWin(board, this)) {
 						px = i;
 						py = j;
 						priority = 2;
@@ -33,8 +26,7 @@ class Computer extends SimpleGameObject
 					// Имитируем ход пользователя
 					board.rows[i].cells[j].innerHTML = simpleGameObject.icon;
 					// Если после хода пользователь победили, то сохраняем индексы ячейки
-					if (checkWin(board, simpleGameObject))
-					{
+					if (checkWin(board, simpleGameObject)) {
 						px = i;
 						py = j;
 						priority = 1;
@@ -48,24 +40,20 @@ class Computer extends SimpleGameObject
 				break;
 		}
 		// Если приоритет не изменился, то компьютер ходит случайно
-		if (priority === 0)
-		{
+		if (priority === 0) {
 			this.randomStep(count, board);
-		} else
-		{
+		} else {
 			board.rows[px].cells[py].innerHTML = this.icon;
 			board.rows[px].cells[py].classList.add("o");
 		}
 	}
 
 	// Случайный ход
-	randomStep(count, board)
-	{
+	randomStep(count, board) {
 		let i = Math.floor(Math.random() * (count));
 		let j = Math.floor(Math.random() * (count));
 
-		while (board.rows[i].cells[j].textContent)
-		{	
+		while (board.rows[i].cells[j].textContent) {
 			i = Math.floor(Math.random() * (count) );
 			j = Math.floor(Math.random() * (count) );
 		}
