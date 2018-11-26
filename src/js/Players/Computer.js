@@ -5,16 +5,9 @@ class Computer extends SimpleGameObject
         super(icon);
     }
 
-	step( board, checkWin, simpleGameObject, stepCount ) 
+	step( board, checkWin, simpleGameObject )
 	{
 		const count = board.getElementsByTagName("tr").length;
-
-		// Первые ход компьютера случайный
-		if (stepCount === 1)
-		{ 
-			this.randomStep( count , board );
-			return;
-		}
 
 		// Приоритет хода.В зависмости от него либо обороняемся, либо атакуем 
 		let priority = 0;

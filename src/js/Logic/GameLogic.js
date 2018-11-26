@@ -15,7 +15,6 @@ class GameLogic
 
 		// Подключаем View
 		this.view = new View(this);
-		this.stepCount = 0;
 	}
 	// Текущие нажатие на клетку
 	clickOnCell( cell ) 
@@ -31,7 +30,7 @@ class GameLogic
 				return;
 			}
 			// Ходим компьютером и проверяем повлиял ли его ход на исход партии
-			this.computer.step( this.board, this.checkWin, this.humanPlayer, this.stepCount );
+			this.computer.step( this.board, this.checkWin, this.humanPlayer );
 			this.checkGameState( this.computer );
 		}
 	}
