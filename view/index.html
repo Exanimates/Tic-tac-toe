@@ -6,11 +6,32 @@
 		<link rel="stylesheet" href="../src/css/index.css">
 		
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   </head>
 	<body>
+		
 		<header>
-			<span>Игра "Крестики-нолики"</span>
+				<div></div>
+				<div>
+					Игра "Крестики-нолики" 
+				</div>
+				<div>
+						<a class="helpButton"> ПОМОЩЬ </a>
+				</div>
+				
 		</header>
+
+		<div id="help-block">
+				<p>
+					1. Для обнуления счета перезагрузите страницу.
+				</p>
+				<p>
+					2. Чтобы очистить игровое поля нажмите на кнопку "Очистить игровое поле".
+				</p>
+				<p>
+					3. Для просмотра историй партий нажмите на кнопку "Показать историю партий".
+				</p>
+		</div>
 
 		<div class="main-block">
 			<div class="step-info">
@@ -48,13 +69,12 @@
 
 		<div id="history">
 		</div>
+		
 		<script src="../src/js/View/View.js"></script>
 		<script src="../src/js/Players/SimpleGameObject.js"></script>
 		<script src="../src/js/Players/Computer.js"></script>
 		<script src="../src/js/Logic/GameLogic.js"></script>
 		<script src="../src/js/index.js"></script>
 	
-		<div id="mocha"></div>
-
 	</body>
 </html>

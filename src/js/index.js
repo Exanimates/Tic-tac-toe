@@ -4,6 +4,17 @@ var articles = document.getElementById("board").getElementsByTagName("td");
 
 addEvents();
 
+$(document).ready(function () {
+	$('#help-block').hide();
+	$('.helpButton').on("click", () => {
+			if ( !$('#help-block').is(':visible'))
+				$("#help-block").fadeIn(250);
+			else
+				$("#help-block").fadeOut(250);
+			
+	});
+});
+
 function addEvents() {
 	for (let i = 0; i <articles.length; i++) {
 		articles[i].addEventListener("click", ()=>{
