@@ -16,14 +16,17 @@ class Computer extends SimpleGameObject
 			return;
 		}
 		let tx, ty; 
-		let tp = 0;
+		// Приоритет хода.В зависмости от него либо обороняемся, либо атакуем 
+		// Индексы ячейки, которую нужно заполнить в завсимсоти от приоритета
 		for (let i = 0; i <= count - 1; i++)
 		{
 			for (let j = 0; j <= count - 1; j++)
 			{
 				if ( !board.rows[i].cells[j].textContent)
 				{
+					// Имитируем ход компьютера
 					board.rows[i].cells[j].innerHTML = this.icon;
+					// Если после хода компьютра выигрыш, то сохраняем индексы ячейки
 					if ( checkWin( board, this ) )
 					{
 						tp = 3;
@@ -31,20 +34,23 @@ class Computer extends SimpleGameObject
 						ty = j;
 						break;
 					}
+					// Имитируем ход пользователя
 					board.rows[i].cells[j].innerHTML = simpleGameObject.icon;
+					// Если после хода пользователь победили, то сохраняем индексы ячейки
 					if ( checkWin( board, simpleGameObject ) )
 					{
 						tx = i;
 						ty = j;
 						tp = 2;
 					}
+					// Очищаем ячейку после симулированных ходов
 					board.rows[i].cells[j].innerHTML = "";
 				}
 			}
-			if (tp === 3)
+			// Если у комьютера есть возможность выиграть, то выходим из цикла
 				break;
 		}
-		if ( tp === 0 )
+		// Если приоритет не изменился, то компьютер ходит случайно
 		{
 			this.randomStep( count, board );
 			return;
