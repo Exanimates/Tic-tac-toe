@@ -18,12 +18,14 @@ function clearBoard() {
 	addEvents();
 }
 
-function showHistory() {
+function showHistory(context) {
 	const history = document.getElementById("history");
 	if (history.style.display === "")
 	{
+		context.innerText = "Скрыть историю партий"
 		history.style.display = "flex";
 	}else{
+		context.innerText = "Показать историю партий"
 		history.style.display = "";
 	}
 }
