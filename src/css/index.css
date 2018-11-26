@@ -185,7 +185,7 @@ tr:nth-of-type(3) td {
 	border: 1px gray dashed;
 }
 #help-block p{
-	color: gray;
+	color: white;
 	font-size: 20px;
 	font-family: 'Open Sans Condensed', sans-serif;
 	display: block;
