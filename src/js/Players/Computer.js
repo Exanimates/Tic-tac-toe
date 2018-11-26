@@ -76,7 +76,7 @@ class Computer extends SimpleGameObject
 			i = Math.floor(Math.random() * (count) );
 			j = Math.floor(Math.random() * (count) );
 		}
-		board.rows[i].cells[j].innerHTML = "o";
+		board.rows[i].cells[j].innerHTML = this.icon;
 		board.rows[i].cells[j].classList.add("o");
 	}
 }
