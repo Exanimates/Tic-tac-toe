@@ -2,9 +2,12 @@ class GameLogic
 {
 	constructor()
 	{
-		this.board = document.getElementById("board"); //Игровое поле в виде таблицы
-		this.compCountHtml = document.getElementById("computer-count"); // Счет компьютера
-		this.playerCountHtml = document.getElementById("player-count"); // Счет игрока
+		// Игровое поле в виде таблицы
+		this.board = document.getElementById("board"); 
+		// Счет компьютера
+		this.compCountHtml = document.getElementById("computer-count"); 
+		// Счет игрока
+		this.playerCountHtml = document.getElementById("player-count"); 
 
 		this.computer = new Computer("o");
 		this.humanPlayer = new SimpleGameObject("x");
@@ -20,7 +23,7 @@ class GameLogic
 		{ 
 			this.stepCount++;
 
-			// Ход пользователя
+			//Проверка исхода партии
 			this.humanPlayer.step( cell );
 			//Проверка 
 			if ( this.checkGameState( this.humanPlayer ) !== undefined )
@@ -66,13 +69,14 @@ class GameLogic
 		// кол-во элементов на поле
 		let countItems = 0;
 		const count = board.getElementsByTagName("tr").length;
+
+		//Обходим таблицу и проверяем не сделал ли игрок или компьютер победных ход
 		for(let i = 0; i < count; i++)
 		{
 			var winRow = true,
 				winColumn = true,
 				winLeftTop = true,
 				winLeftBottom = true;
-			//Обходим таблицу и проверяем не сделал ли игрок или компьютер победных ход
 			for(let k = 0; k < count; k++)
 			{
 				if (board.rows[i].cells[k].textContent) countItems++;
