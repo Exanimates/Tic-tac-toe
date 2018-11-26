@@ -58,13 +58,13 @@ class GameLogic {
 		const count = board.getElementsByTagName("tr").length;
 
 		//Обходим таблицу и проверяем не сделал ли игрок или компьютер победных ход
-		for(let i = 0; i < count; i++) {
+		for (let i = 0; i < count; i++) {
 			var winRow = true,
 				winColumn = true,
 				winLeftTop = true,
 				winLeftBottom = true;
 
-			for(let k = 0; k < count; k++) {
+			for (let k = 0; k < count; k++) {
 				if (board.rows[i].cells[k].textContent) countItems++;
 				if (board.rows[i].cells[k].innerHTML !== player.icon) winRow = false;
 				if (board.rows[k].cells[i].innerHTML !== player.icon) winColumn = false;
