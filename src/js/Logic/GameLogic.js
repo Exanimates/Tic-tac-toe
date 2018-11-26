@@ -13,7 +13,7 @@ class GameLogic
 		this.stepCount = 0;
 	}
 	// Текущие нажатие на клетку
-	currentStep( cell ) 
+	clickOnCell( cell ) 
 	{
 		// Проверка содержимого ячейки
 		if ( !cell.textContent ) 

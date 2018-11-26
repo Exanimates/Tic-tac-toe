@@ -4,7 +4,7 @@ const gameLogic = new GameLogic();
 var articles = document.getElementById("board").getElementsByTagName("td");
 for (let i = 0; i < articles.length; i++) {
 	articles[i].addEventListener("click", ()=>{
-		gameLogic.currentStep(articles[i]);
+		gameLogic.clickOnCell(articles[i]);
 	});
 }
 
@@ -16,7 +16,7 @@ resetGame.addEventListener("click", ()=>{
 	gameLogic.stepCount = 0;
 	for (let i = 0; i < articles.length; i++) {
 		articles[i].addEventListener("click", ()=>{
-			gameLogic.currentStep(articles[i]);
+			gameLogic.clickOnCell(articles[i]);
 		});
 	}
 });
