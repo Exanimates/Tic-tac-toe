@@ -5,17 +5,17 @@ class View
          this.gameLogic = gameLogic;
      }
 
-	updateUiAfterWin(html_component, message, alert)
+	updateUi(message, alert, html_component)
 	{
-		html_component.innerText = Number(html_component.innerText) + 1;
-		swal({title: message, icon: alert});
-		this.removeEvent(this.gameLogic.board);
-		this.addElementToHistory(this.gameLogic.board);
-	}
-
-	updateUiAfterTie(message)
-	{
-		swal({title: message});
+		if (arguments.length == 1)
+		{
+			swal({title:message});
+		}
+		if (arguments.length == 3)
+		{
+			html_component.innerText = Number(html_component.innerText) + 1;
+			swal({title: message, icon: alert});
+		}
 		this.removeEvent(this.gameLogic.board);
 		this.addElementToHistory(this.gameLogic.board);
 	}

@@ -38,21 +38,22 @@ class GameLogic
 		var win = this.checkWin( this.board, gameobject );
 		if( win )
 		{
-			if ( gameobject instanceof SimpleGameObject )
+			if ( gameobject instanceof SimpleGameObject && !(gameobject instanceof Computer) )
 			{
-				if ( gameobject instanceof Computer )
-				{
-					this.view.updateUiAfterWin( this.compCountHtml, "Вы проиграли в партии", "warning" );
-					return;
-				}
-				this.view.updateUiAfterWin( this.playerCountHtml, "Вы победили в партии", "success" );
+				this.view.updateUi( "Вы победили в партии", "success", this.playerCountHtml);
 			}
-			return true;
+
+			if ( gameobject instanceof Computer )
+			{
+				this.view.updateUi( "Вы проиграли в партии", "error", this.compCountHtml);
+			}
+
+			return true;	
 		}
 		else if ( win === false )
 		//Если ничья, то выходим из функции
 		{ 
-			this.view.updateUiAfterTie("Ничья");
+			this.view.updateUi("Ничья");
 			return false;
 		}
 	}
