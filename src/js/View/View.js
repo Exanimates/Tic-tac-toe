@@ -24,7 +24,7 @@ class View
 	 addElementToHistory( board )
 	 {
 		 var historyBlock = document.getElementById("history");
-		 var elementOfHistory = document.getElementById("board").cloneNode(true);
+		 var elementOfHistory = board.cloneNode(true);
 		 historyBlock.appendChild(elementOfHistory);
 	 }
 
