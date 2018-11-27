@@ -2,10 +2,6 @@
     -webkit-box-sizing:border-box;
     box-sizing:border-box;
 	outline:none;
-	-moz-user-select: none;
-  	-khtml-user-select: none;
-  	-webkit-user-select: none;
-  	user-select: none;
 }
 body, html{
     background: #202020;
@@ -172,7 +168,7 @@ tr:nth-of-type(3) td {
 	border-bottom-color: transparent;
 }
 
-.helpButton{
+#helpButton{
 	border-bottom: 1px white inset;
 	cursor: pointer;
 }
@@ -226,6 +222,6 @@ tr:nth-of-type(3) td {
 .fa:hover {
     color: #ccc;
 }
-.helpButton:hover{
+#helpButton:hover{
 	color: #ccc;
 }

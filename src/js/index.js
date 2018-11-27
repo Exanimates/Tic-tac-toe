@@ -14,7 +14,7 @@ $(document).ready(function(){
 	$('#buttonShowHistory').click(function() {
 		gameLogic.view.showBlock('#history', 'flex');
 	});
-	$('.helpButton').click(function() {
+	$('#helpButton').click(function() {
 		gameLogic.view.showBlock('#help-block', '');
 	});
 })
