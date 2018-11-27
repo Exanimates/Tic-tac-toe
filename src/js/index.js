@@ -1,28 +1,28 @@
 const gameLogic = new GameLogic();
+var articles = document.getElementById("board").getElementsByTagName("td");
 
-//На каждый элемент игрового поля вешаем функцию хода
-var articles = document.getElementsByTagName("td");
-for (let i = 0; i < articles.length; i++) {
-	articles[i].addEventListener("click", ()=>{
-		gameLogic.currentStep(articles[i]);
+// Вешаем обработчики кликов
+$(document).ready(function(){
+	$('#user-icon').click(function() {
+		gameLogic.view.restart(document.getElementById("board"));
+		newParty();
 	});
+	$('#computer-icon').click(function() {
+		newParty();
+		gameLogic.computer.randomStep(gameLogic.board.getElementsByTagName("tr").length, gameLogic.board);
+	});
+	$('#buttonShowHistory').click(function() {
+		gameLogic.view.showBlock('#history', 'flex');
+	});
+	$('.helpButton').click(function() {
+		gameLogic.view.showBlock('#help-block', '');
+	});
+})
+// Инициализация новой игровой партии
+function newParty(){
+	gameLogic.view.restart(document.getElementById("board"));
+	$(articles).click(function(){
+		gameLogic.clickOnCell(this);
+	});
+	gameLogic.view.showBlock(document.getElementById("playerMove"));
 }
-
-// По нажатию на кнопку reset-game удаляем поле
-const resetGame = document.getElementById("reset-game");
-
-resetGame.addEventListener("click", ()=>{
-	gameLogic.restartGame();
-});
-// Скрываем/Показываем блок с историей игр
-const showHistory = document.getElementById("buttonShowHistory");
-
-showHistory.addEventListener("click", function () {  
-	const history = document.getElementById("history");
-	if (history.style.display === "")
-	{
-		history.style.display = "flex";
-	}else{
-		history.style.display = "";
-	}
-});
