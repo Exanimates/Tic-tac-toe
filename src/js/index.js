@@ -21,10 +21,8 @@ $(document).ready(function(){
 // Инициализация новой игровой партии
 function newParty(){
 	gameLogic.view.restart(document.getElementById("board"));
-	for (let i = 0; i <articles.length; i++) {
-		articles[i].addEventListener("click", ()=>{
-			gameLogic.clickOnCell(articles[i]);
-		});
-	}
+	$(articles).click(function(){
+		gameLogic.clickOnCell(this);
+	});
 	gameLogic.view.showBlock(document.getElementById("playerMove"));
 }

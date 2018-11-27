@@ -27,10 +27,7 @@ class View
 	// Удаления событий повешенных на ячейке игрового поля
 	removeEvent(board) {
 		const elements = board.getElementsByTagName("td");
-		for (let i = 0; i < elements.length; i++) {
-			var elClone = elements[i].cloneNode(true);
-			elements[i].parentNode.replaceChild(elClone, elements[i]);
-		}
+		$(elements).unbind();
 	}
 
 	// Очисткая игрового поля
