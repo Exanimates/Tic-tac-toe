@@ -14,13 +14,19 @@ body, html{
 
 header{
 	height: 75px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: 33.33% 33.33% 33.33%;
 	border:1px solid white;
 	border-radius:20px;
 	color: white;
 	font-size: 20px;
+	vertical-align: middle;
+	text-align: center;
+}
+header div{
+	display: flex;
+	align-items: center;
+	justify-content: center
 }
 .titles{
 	width: 250px;
@@ -75,7 +81,7 @@ header a{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 60%;
+	height: 45%;
 }
 #history{
 	display: none;
@@ -163,4 +169,61 @@ td:nth-of-type(3) {
 }
 tr:nth-of-type(3) td {
 	border-bottom-color: transparent;
+}
+
+.helpButton{
+	border-bottom: 1px white inset;
+	cursor: pointer;
+}
+#help-block{
+    position: absolute;
+	width: 300px;
+	height: 200px;
+	background-color: #222;
+	top: 100px;
+	right: 1%;
+	border: 1px double white;
+}
+#help-block p{
+	color: white;
+	font-size: 20px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	display: block;
+	padding: 0% 5%;
+}
+#playerMove{
+	width: 100%;
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+}
+#whofirst{
+	color: white;
+	font-size: 29px;
+}
+#players{
+	display: flex;
+	justify-content: space-around;
+	padding-top: 15px;
+}
+#playerMove div{
+	text-align: center;
+}
+#playerMove i{
+	margin: 0 auto;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+.player_description{
+	display: inline-block;
+	color: white;
+}
+.player_description div{
+	font-size: 20px;
+}
+.fa:hover {
+    color: #ccc;
+}
+.helpButton:hover{
+	color: #ccc;
 }

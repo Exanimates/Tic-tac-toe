@@ -6,11 +6,30 @@
 		<link rel="stylesheet" href="../src/css/index.css">
 		
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
 	<body>
+		
 		<header>
-			<span>Игра "Крестики-нолики"</span>
+				<div></div>
+				<div>
+					Игра "Крестики-нолики" 
+				</div>
+				<div>
+						<a class="helpButton"> ПОМОЩЬ </a>
+				</div>
+				
 		</header>
+
+		<div id="help-block" style="display: none">
+				<p>
+					1. Перед началом партии выберите, кто будет ходить первым.
+				</p>
+				<p>
+					2. Для обнуления счета перезагрузите страницу.
+				</p>
+		</div>
 
 		<div class="main-block">
 			<div class="step-info">
@@ -40,21 +59,41 @@
 				</tr>
 			</table>
 		</div>
-		
+
+		<div id="playerMove">
+				<div id ="whofirst">
+					Выберите, кто будет ходить первым
+				</div>
+				<div id="players">
+						<div class="player_description">
+							<i class="fa fa-user-circle fa-5x fa-inverse" id ="user-icon"aria-hidden="true"></i>
+							<div>
+								Вы
+							</div>
+
+						</div>
+						<div class="player_description">
+							<i class="fa fa-desktop fa-5x fa-inverse" id ="computer-icon"aria-hidden="true"></i>
+							<div>
+								Компьютер
+							</div>
+						</div>
+				</div>
+
+		</div>
+
 		<div class="showHistory">
-			<button id="reset-game" class="buttons" onclick="clearBoard()">Очистить игровое поле</button>
-			<button class="buttons" id="buttonShowHistory" onclick="showHistory(this)">Показать историю партий</button>
+			<button class="buttons" id="buttonShowHistory">Показать историю партий</button>
 		</div>
 
 		<div id="history">
 		</div>
+		
 		<script src="../src/js/View/View.js"></script>
 		<script src="../src/js/Players/SimpleGameObject.js"></script>
 		<script src="../src/js/Players/Computer.js"></script>
 		<script src="../src/js/Logic/GameLogic.js"></script>
 		<script src="../src/js/index.js"></script>
 	
-		<div id="mocha"></div>
-
 	</body>
 </html>

@@ -14,6 +14,7 @@ class View
 		}
 		this.removeEvent(this.gameLogic.board);
 		this.addElementToHistory(this.gameLogic.board);
+		this.showBlock(document.getElementById("playerMove"));
 	}
 
 	 // Добавление нового элемента в историю игр
@@ -33,12 +34,21 @@ class View
 	}
 
 	// Очисткая игрового поля
-	static clearBoard(board) {
+	restart(board) {
 		const elements = board.getElementsByTagName("td");
 		for (let i = 0; i < elements.length; i++) {
 			elements[i].innerHTML = "";
 			elements[i].classList.remove("x");
 			elements[i].classList.remove("o");
 		}
+		this.showBlock(document.getElementById("playerMove"), "inline-block");
+	}
+	showBlock(element, blockStyle){
+		if (!$(element).is(':visible')){
+			$(element).fadeIn(250);
+			$(element).css({'display': blockStyle});
+		}	
+		else
+			$(element).fadeOut(250);
 	}
 }
