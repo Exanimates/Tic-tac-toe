@@ -32,14 +32,11 @@ class GameLogic {
 		var win = this.checkWin(this.board,gameobject);
 
 		if(win) {
-			if (gameobject instanceof SimpleGameObject && !(gameobject instanceof Computer)) {
-				this.view.updateUi( "Вы победили в партии", "success", this.playerCountHtml);
-			}
-
 			if (gameobject instanceof Computer) {
 				this.view.updateUi( "Вы проиграли в партии", "warning", this.compCountHtml);
+				return true;
 			}
-
+			this.view.updateUi( "Вы победили в партии", "success", this.playerCountHtml);
 			return true;	
 		} else if (win === false) {
 			this.view.updateUi("Ничья");
