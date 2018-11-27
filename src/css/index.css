@@ -71,6 +71,7 @@ header a{
 	justify-content: center;
 	margin-top: 20px;
 	border:1px solid white;
+	border-radius: 20px;
 }
 .main-block{
 	display: flex;
@@ -183,6 +184,7 @@ tr:nth-of-type(3) td {
 	top: 100px;
 	right: 1%;
 	border: 1px double white;
+	border-radius: 20px;
 }
 #help-block p{
 	color: white;
