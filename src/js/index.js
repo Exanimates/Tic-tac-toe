@@ -1,6 +1,7 @@
 const gameLogic = new GameLogic();
 var articles = document.getElementById("board").getElementsByTagName("td");
 
+// Вешаем обработчики кликов
 $(document).ready(function(){
 	$('#user-icon').click(function() {
 		gameLogic.view.restart(document.getElementById("board"));
@@ -17,6 +18,7 @@ $(document).ready(function(){
 		gameLogic.view.showBlock('#help-block', '');
 	});
 })
+// Инициализация новой игровой партии
 function newParty(){
 	gameLogic.view.restart(document.getElementById("board"));
 	for (let i = 0; i <articles.length; i++) {
