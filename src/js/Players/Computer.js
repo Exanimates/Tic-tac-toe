@@ -6,7 +6,7 @@ class Computer extends SimpleGameObject {
 	step(board, checkWin, simpleGameObject) {
 		const count = board.getElementsByTagName("tr").length;
 
-		// Приоритет хода.В зависмости от него либо обороняемся, либо атакуем 
+		// Приоритет хода.В зависмости от него компьютер обороняется/атакует 
 		let priority = 0;
 		// Индексы ячейки, которую нужно заполнить в завсимсоти от приоритета
 		let px, py; 
@@ -16,7 +16,7 @@ class Computer extends SimpleGameObject {
 				if (!board.rows[i].cells[j].textContent) {
 					// Имитируем ход компьютера
 					board.rows[i].cells[j].innerHTML = this.icon;
-					// Если после хода компьютра выигрыш, то сохраняем индексы ячейки
+					// Если ход компьютра победный, то сохраняем индексы ячейки
 					if (checkWin(board, this)) {
 						px = i;
 						py = j;
@@ -25,7 +25,7 @@ class Computer extends SimpleGameObject {
 					}
 					// Имитируем ход пользователя
 					board.rows[i].cells[j].innerHTML = simpleGameObject.icon;
-					// Если после хода пользователь победили, то сохраняем индексы ячейки
+					// Если ход компьютра победный, то сохраняем индексы ячейки
 					if (checkWin(board, simpleGameObject)) {
 						px = i;
 						py = j;

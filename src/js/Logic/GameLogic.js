@@ -5,18 +5,18 @@ class GameLogic {
 		this.compCountHtml = document.getElementById("computer-count"); 
 		this.playerCountHtml = document.getElementById("player-count"); 
 
-		// Инициализируем игровые объекты
+		// Инициализация игровых объектов
 		this.computer = new Computer("o");
 		this.humanPlayer = new SimpleGameObject("x");
 
-		// Подключаем View с логикой обработки UI
+		// Подключение View с логикой обработки UI
 		this.view = new View(this);
 	}
-	// Текущие нажатие на клетку
+	// Нажатие на клетку
 	clickOnCell(cell) {
 		// Проверка содержимого ячейки
 		if (!cell.textContent) { 
-			// Ходим пользователем и проверяем повлиял ли его ход на исход партии
+			// Ход пользователя
 			this.humanPlayer.step(cell);
 			//Проверка исхода партии
 			if (this.checkGameState(this.humanPlayer) !== undefined){
@@ -27,7 +27,7 @@ class GameLogic {
 			this.checkGameState(this.computer);
 		}
 	}
-	// Проверка исхода партии
+	// Проверка состояния игры
 	checkGameState(gameobject) {
 		var win = this.checkWin(this.board,gameobject);
 
@@ -48,7 +48,7 @@ class GameLogic {
 	checkWin(board, player) {
 		//Маркер победы
 		let flag; 
-		// кол-во элементов на поле
+		// Кол-во игровых элементов на поле
 		let countItems = 0;
 		const count = board.getElementsByTagName("tr").length;
 
@@ -72,7 +72,7 @@ class GameLogic {
 				return flag;
 			}
 		}
-		//Если победной комбинации не обнаружено, а все ячейки заняты, то ничья
+		//Если победной комбинации не обнаружено и все ячейки заняты, то ничья
 		if (!flag && (countItems === count * count)) {
 			return false;
 		}

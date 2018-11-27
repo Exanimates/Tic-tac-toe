@@ -3,7 +3,8 @@ class View
 	constructor(gameLogic){
 		this.gameLogic = gameLogic;
 	}
-
+	
+	// Обновление UI в зависимости от исхода партии
 	updateUi(message, alert, html_component) {
 		if (arguments.length == 1) {
 			swal({title:message});
@@ -24,13 +25,13 @@ class View
 		 historyBlock.appendChild(elementOfHistory);
 	 }
 
-	// Удаления событий повешенных на ячейке игрового поля
+	// Удаления событий повешенных на ячейки игрового поля
 	removeEvent(board) {
 		const elements = board.getElementsByTagName("td");
 		$(elements).unbind();
 	}
 
-	// Очисткая игрового поля
+	// Рестарт игры
 	restart(board) {
 		const elements = board.getElementsByTagName("td");
 		for (let i = 0; i < elements.length; i++) {
@@ -40,6 +41,7 @@ class View
 		}
 		this.showBlock(document.getElementById("playerMove"), "inline-block");
 	}
+	// Изменение видмости блока
 	showBlock(element, blockStyle){
 		if (!$(element).is(':visible')){
 			$(element).fadeIn(250);
