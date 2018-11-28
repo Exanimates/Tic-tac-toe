@@ -43,6 +43,12 @@ header a{
 	grid-template-columns: auto auto auto;
 	display: grid;
 }
+#board{
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;  
+}
 .player-title
 {
     margin:auto;
@@ -52,7 +58,7 @@ header a{
 	width: 250px;
     text-align:center;
 }
-.showHistory{
+.show-history{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -168,7 +174,7 @@ tr:nth-of-type(3) td {
 	border-bottom-color: transparent;
 }
 
-#helpButton{
+#help-button{
 	border-bottom: 1px white inset;
 	cursor: pointer;
 }
@@ -189,13 +195,13 @@ tr:nth-of-type(3) td {
 	display: block;
 	padding: 0% 5%;
 }
-#playerMove{
+#player-move{
 	width: 100%;
 	display: inline-block;
 	align-items: center;
 	justify-content: center;
 }
-#whofirst{
+#who-first{
 	color: white;
 	font-size: 29px;
 }
@@ -204,10 +210,10 @@ tr:nth-of-type(3) td {
 	justify-content: space-around;
 	padding-top: 15px;
 }
-#playerMove div{
+#player-move div{
 	text-align: center;
 }
-#playerMove i{
+#player-move i{
 	margin: 0 auto;
 	cursor: pointer;
 	margin-bottom: 20px;
@@ -222,6 +228,6 @@ tr:nth-of-type(3) td {
 .fa:hover {
     color: #ccc;
 }
-#helpButton:hover{
+#help-button:hover{
 	color: #ccc;
 }

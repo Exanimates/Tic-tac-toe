@@ -11,10 +11,10 @@ $(document).ready(function(){
 		newParty();
 		gameLogic.computer.randomStep(gameLogic.board.getElementsByTagName("tr").length, gameLogic.board);
 	});
-	$('#buttonShowHistory').click(function() {
+	$('#button-show-history').click(function() {
 		gameLogic.view.showBlock('#history', 'flex');
 	});
-	$('#helpButton').click(function() {
+	$('#help-button').click(function() {
 		gameLogic.view.showBlock('#help-block', '');
 	});
 })
@@ -24,5 +24,5 @@ function newParty(){
 	$(articles).click(function(){
 		gameLogic.clickOnCell(this);
 	});
-	gameLogic.view.showBlock(document.getElementById("playerMove"));
+	gameLogic.view.showBlock(document.getElementById("player-move"));
 }

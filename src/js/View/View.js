@@ -15,7 +15,7 @@ class View
 		}
 		this.removeEvent(this.gameLogic.board);
 		this.addElementToHistory(this.gameLogic.board);
-		this.showBlock(document.getElementById("playerMove"));
+		this.showBlock(document.getElementById("player-move"));
 	}
 
 	 // Добавление нового элемента в историю игр
@@ -39,7 +39,7 @@ class View
 			elements[i].classList.remove("x");
 			elements[i].classList.remove("o");
 		}
-		this.showBlock(document.getElementById("playerMove"), "inline-block");
+		this.showBlock(document.getElementById("player-move"), "inline-block");
 	}
 	// Изменение видмости блока
 	showBlock(element, blockStyle){
