@@ -33,13 +33,13 @@ class GameLogic {
 
 		if(win) {
 			if (gameobject instanceof Computer) {
-				this.view.updateUi( "Вы проиграли в партии", "warning", this.compCountHtml);
+				this.view.updateUiAfterEndParty( "Вы проиграли в партии", "warning", this.compCountHtml);
 				return true;
 			}
-			this.view.updateUi( "Вы победили в партии", "success", this.playerCountHtml);
+			this.view.updateUiAfterEndParty( "Вы победили в партии", "success", this.playerCountHtml);
 			return true;	
 		} else if (win === false) {
-			this.view.updateUi("Ничья");
+			this.view.updateUiAfterEndParty("Ничья");
 			return false;
 		}
 	}

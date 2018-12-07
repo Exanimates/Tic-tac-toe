@@ -5,7 +5,7 @@ class View
 	}
 	
 	// Обновление UI в зависимости от исхода партии
-	updateUi(message, alert, html_component) {
+	updateUiAfterEndParty(message, alert, html_component) {
 		if (arguments.length == 1) {
 			swal({title:message});
 		}
