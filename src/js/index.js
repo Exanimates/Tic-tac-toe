@@ -4,7 +4,6 @@ var articles = document.getElementById("board").getElementsByTagName("td");
 // Добавление обработчиков события click
 $(document).ready(function(){
 	$('#user-icon').click(function() {
-		gameLogic.view.restart(document.getElementById("board"));
 		newParty();
 	});
 	$('#computer-icon').click(function() {
