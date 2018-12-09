@@ -1,3 +1,4 @@
+// Класс отвечающий за UI: отрисовка/обновление/добавление элементов
 class View
 {
 	constructor(gameLogic){
@@ -5,7 +6,7 @@ class View
 	}
 	
 	// Обновление UI в зависимости от исхода партии
-	updateUi(message, alert, html_component) {
+	updateUiAfterEndParty(message, alert, html_component) {
 		if (arguments.length == 1) {
 			swal({title:message});
 		}
@@ -15,12 +16,12 @@ class View
 		}
 		this.removeEvent(this.gameLogic.board);
 		this.addElementToHistory(this.gameLogic.board);
-		this.showBlock(document.getElementById("player-move"));
+		this.showBlock($('.choose-player'));
 	}
 
 	 // Добавление нового элемента в историю игр
 	 addElementToHistory(board) {
-		 var historyBlock = document.getElementById("history");
+		 var historyBlock = $('.history')[0];
 		 var elementOfHistory = board.cloneNode(true);
 		 historyBlock.appendChild(elementOfHistory);
 	 }
@@ -33,14 +34,15 @@ class View
 
 	// Рестарт игры
 	restart(board) {
-		const elements = board.getElementsByTagName("td");
+		const elements = $(board).find('td');
 		for (let i = 0; i < elements.length; i++) {
 			elements[i].innerHTML = "";
 			elements[i].classList.remove("x");
 			elements[i].classList.remove("o");
 		}
-		this.showBlock(document.getElementById("player-move"), "inline-block");
+		this.showBlock($('.choose-player'), "inline-block");
 	}
+
 	// Изменение видмости блока
 	showBlock(element, blockStyle){
 		if (!$(element).is(':visible')){
@@ -49,5 +51,27 @@ class View
 		}	
 		else
 			$(element).fadeOut(250);
+	}
+
+	// Отрисовка таблицы согласно заданным размерам
+	renderTable(boardLength, board) {
+
+		for (let j = 0; j <= boardLength; j++) {
+
+			let row = document.createElement("tr");
+
+			for (var i = 0; i <= boardLength; i++) {
+				let cell = document.createElement("td");
+				row.appendChild(cell);
+			}
+
+			board.appendChild(row);
+		}
+	}
+
+	// Занятие ячейки игрового поля
+	occupationCell(articles, icon){
+		articles.innerText = icon;
+		articles.classList.add(icon);
 	}
 }

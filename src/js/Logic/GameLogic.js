@@ -1,7 +1,8 @@
+// Класс с игровой логикой: ралзичные проверки/ходы игровых сущностей
 class GameLogic {
 	constructor() {
 		// Инициализация нужных HTML элементов
-		this.board = document.getElementById("board"); 
+		this.board = $('.game > table')[0];
 		this.compCountHtml = document.getElementById("computer-count"); 
 		this.playerCountHtml = document.getElementById("player-count"); 
 
@@ -11,7 +12,11 @@ class GameLogic {
 
 		// Подключение View с логикой обработки UI
 		this.view = new View(this);
+
+		// Отрисовка таблицы
+		this.view.renderTable(2, this.board);
 	}
+
 	// Нажатие на клетку
 	clickOnCell(cell) {
 		// Проверка содержимого ячейки
@@ -23,23 +28,24 @@ class GameLogic {
 				return;
 			}
 			// Ходим компьютером и проверяем повлиял ли его ход на исход партии
-			this.computer.step(this.board, this.checkWin, this.humanPlayer);
+			this.computer.step(this.board, this.checkWin, this.humanPlayer, this.view.occupationCell);
 			this.checkGameState(this.computer);
 		}
 	}
+
 	// Проверка состояния игры
 	checkGameState(gameobject) {
 		var win = this.checkWin(this.board,gameobject);
 
 		if(win) {
 			if (gameobject instanceof Computer) {
-				this.view.updateUi( "Вы проиграли в партии", "warning", this.compCountHtml);
+				this.view.updateUiAfterEndParty( "Вы проиграли в партии", "warning", this.compCountHtml);
 				return true;
 			}
-			this.view.updateUi( "Вы победили в партии", "success", this.playerCountHtml);
+			this.view.updateUiAfterEndParty( "Вы победили в партии", "success", this.playerCountHtml);
 			return true;	
 		} else if (win === false) {
-			this.view.updateUi("Ничья");
+			this.view.updateUiAfterEndParty("Ничья");
 			return false;
 		}
 	}

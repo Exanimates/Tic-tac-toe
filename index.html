@@ -11,82 +11,66 @@
   </head>
 	<body>
 		
-		<header>
+		<header class="header">
 				<div></div>
-				<div>
+				<div class="header__description">
 					Игра "Крестики-нолики" 
 				</div>
-				<div>
-						<a id="help-button"> Помощь </a>
+				<div class="header__help">
+						<a class="header__help__button"> Помощь </a>
 				</div>
 				
 		</header>
 
-		<div id="help-block" style="display: none">
-				<p>
+		<div class="help-block" style="display: none">
+				<p class="help-block__paragraph">
 					1. Перед началом партии выберите, кто будет ходить первым.
 				</p>
-				<p>
+				<p class="help-block__paragraph">
 					2. Для обнуления счета перезагрузите страницу.
 				</p>
 		</div>
 
-		<div class="main-block">
-			<div class="step-info">
-				<span class="player-title">Счет</span>
-				<span class="player-title">Компьютер:<span id="computer-count">0</span></span>
-				<span class="player-title">Вы:<span id="player-count">0</span></span>
+		<div class="game-score">
+			<div class="game-score__content">
+				<h2 class="game-score__title">Счет</h2>
+				<p class="game-score__player">Компьютер:<span id="computer-count">0</span></span>
+				<p class="game-score__player">Вы:<span id="player-count">0</span></span>
 			</div>
 		</div>
 
 		<div class="game">
-			<table id="board">
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+			<table class="game__board">
+				
 			</table>
 		</div>
 
-		<div id="player-move">
-				<div id ="who-first">
-					Выберите, кто будет ходить первым
-				</div>
-				<div id="players">
-						<div class="player_description">
-							<i class="fa fa-user-circle fa-5x fa-inverse" id ="user-icon"aria-hidden="true"></i>
-							<div>
+		<div class="choose-player">
+				<h1 class="choose-player__title">Выберите, кто будет ходить первым</h1>
+
+				<div id="players" class="choose-player__content">
+						<div class="choose-player__content__description">
+							<i class="fa fa-user-circle fa-5x fa-inverse" aria-hidden="true"></i>
+							<p class="choose-player__content__description__text">
 								Вы
-							</div>
+							</p>
 
 						</div>
-						<div class="player_description">
-							<i class="fa fa-desktop fa-5x fa-inverse" id ="computer-icon"aria-hidden="true"></i>
-							<div>
+						<div class="choose-player__content__description">
+							<i class="fa fa-desktop fa-5x fa-inverse" aria-hidden="true"></i>
+							<p class="choose-player__content__description__text">
 								Компьютер
-							</div>
+							</p>
 						</div>
 				</div>
 
 		</div>
 
 		<div class="show-history">
-			<button class="buttons" id="button-show-history">История партий</button>
+			<button class="show-history__buttons">История партий</button>
 		</div>
 
-		<div id="history">
+		<div class="history">
 		</div>
 		
 		<script src="./src/js/View/View.js"></script>

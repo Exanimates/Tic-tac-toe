@@ -1,28 +1,40 @@
+// Инициализируем игровую логику
 const gameLogic = new GameLogic();
-var articles = document.getElementById("board").getElementsByTagName("td");
+
+// Получаем ячейки игрового поля
+var articles = $('.game > table  td');
 
 // Добавление обработчиков события click
-$(document).ready(function(){
-	$('#user-icon').click(function() {
-		gameLogic.view.restart(document.getElementById("board"));
+$(document).ready(function () {
+
+	// Первый ход игрока
+	$('.fa-user-circle').click(function () {
 		newParty();
 	});
-	$('#computer-icon').click(function() {
+
+	// Первый ход компьютера
+	$('.fa-desktop').click(function () {
 		newParty();
-		gameLogic.computer.randomStep(gameLogic.board.getElementsByTagName("tr").length, gameLogic.board);
+		gameLogic.computer.randomStep($('.game > table  tr').length, gameLogic.board, gameLogic.view.occupationCell);
 	});
-	$('#button-show-history').click(function() {
-		gameLogic.view.showBlock('#history', 'flex');
+
+	// Показ/скрытие блоков
+	$('.show-history__buttons').click(function () {
+		gameLogic.view.showBlock('.history', 'flex');
 	});
-	$('#help-button').click(function() {
-		gameLogic.view.showBlock('#help-block', '');
+	$('.header__help__button').click(function () {
+		gameLogic.view.showBlock('.help-block', '');
 	});
-})
+});
+
 // Запуск новой игровой партии
-function newParty(){
-	gameLogic.view.restart(document.getElementById("board"));
-	$(articles).click(function(){
+function newParty() {
+
+	// Сброс UI игры в начало партии
+	gameLogic.view.restart($('.game table')[0]);
+
+	// Вешаем обработчик кликов на ячейки игрового поля
+	$(articles).click(function () {
 		gameLogic.clickOnCell(this);
 	});
-	gameLogic.view.showBlock(document.getElementById("player-move"));
 }
