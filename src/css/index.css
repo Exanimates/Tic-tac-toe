@@ -161,21 +161,37 @@ td:hover {
 	cursor: pointer;
 }
 
-td:first-of-type {
+tr td:first-child{
 	border-left-color: transparent;
-	border-top-color: transparent;
 }
 
-td:nth-of-type(2) {
-	border-top-color: transparent;
-}
-
-td:nth-of-type(3) {
+tr td:last-child{
 	border-right-color: transparent;
+}
+
+tr:first-of-type td{
 	border-top-color: transparent;
 }
 
-tr:nth-of-type(3) td {
+tr:first-of-type td:nth-child(1) {
+	border-left-color: transparent;
+}
+
+tr:first-of-type td:last-of-type {
+	border-right-color: transparent;
+}
+
+tr:last-of-type td {
+	border-bottom-color: transparent;
+}
+
+tr:last-of-type td:nth-child(1) {
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+}
+
+tr:last-of-type td:last-child {
+	border-right-color: transparent;
 	border-bottom-color: transparent;
 }
 

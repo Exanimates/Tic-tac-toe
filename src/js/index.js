@@ -1,4 +1,5 @@
 const gameLogic = new GameLogic();
+
 var articles = $('.game > table  td');
 
 // Добавление обработчиков события click

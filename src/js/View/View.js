@@ -50,4 +50,19 @@ class View
 		else
 			$(element).fadeOut(250);
 	}
+
+	renderTable(boardLength, board) {
+
+		for (let j = 0; j <= boardLength; j++) {
+
+			let row = document.createElement("tr");
+
+			for (var i = 0; i <= boardLength; i++) {
+				let cell = document.createElement("td");
+				row.appendChild(cell);
+			}
+
+			board.appendChild(row);
+		}
+	}
 }

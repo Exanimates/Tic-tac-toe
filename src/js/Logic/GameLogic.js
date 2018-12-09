@@ -11,7 +11,10 @@ class GameLogic {
 
 		// Подключение View с логикой обработки UI
 		this.view = new View(this);
+
+		this.view.renderTable(2, this.board);
 	}
+
 	// Нажатие на клетку
 	clickOnCell(cell) {
 		// Проверка содержимого ячейки
