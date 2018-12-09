@@ -1,3 +1,4 @@
+// Класс отвечающий за UI: отрисовка/обновление/добавление элементов
 class View
 {
 	constructor(gameLogic){
@@ -41,6 +42,7 @@ class View
 		}
 		this.showBlock($('.choose-player'), "inline-block");
 	}
+
 	// Изменение видмости блока
 	showBlock(element, blockStyle){
 		if (!$(element).is(':visible')){
@@ -51,6 +53,7 @@ class View
 			$(element).fadeOut(250);
 	}
 
+	// Отрисовка таблицы согласно заданным размерам
 	renderTable(boardLength, board) {
 
 		for (let j = 0; j <= boardLength; j++) {
@@ -65,4 +68,5 @@ class View
 			board.appendChild(row);
 		}
 	}
+
 }

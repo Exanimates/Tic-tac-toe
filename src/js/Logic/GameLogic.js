@@ -1,3 +1,4 @@
+// Класс с игровой логикой: ралзичные проверки/ходы игровых сущностей
 class GameLogic {
 	constructor() {
 		// Инициализация нужных HTML элементов
@@ -12,6 +13,7 @@ class GameLogic {
 		// Подключение View с логикой обработки UI
 		this.view = new View(this);
 
+		// Отрисовка таблицы
 		this.view.renderTable(2, this.board);
 	}
 
@@ -30,6 +32,7 @@ class GameLogic {
 			this.checkGameState(this.computer);
 		}
 	}
+
 	// Проверка состояния игры
 	checkGameState(gameobject) {
 		var win = this.checkWin(this.board,gameobject);

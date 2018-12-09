@@ -1,9 +1,11 @@
+// Класс для игровой сущности компьютер. Умеет ходить взвешенно/случайно
 class Computer extends SimpleGameObject {
 	constructor(icon){
 		super(icon);
 	}
 
-	step(board, checkWin, simpleGameObject) {
+	// Взвешенный ход
+	step(board, checkWin, simpleGameObject, setCell) {
 		const count = board.getElementsByTagName("tr").length;
 
 		// Приоритет хода.В зависмости от него компьютер обороняется/атакует 
