@@ -28,7 +28,7 @@ class GameLogic {
 				return;
 			}
 			// Ходим компьютером и проверяем повлиял ли его ход на исход партии
-			this.computer.step(this.board, this.checkWin, this.humanPlayer);
+			this.computer.step(this.board, this.checkWin, this.humanPlayer, this.view.occupationCell);
 			this.checkGameState(this.computer);
 		}
 	}

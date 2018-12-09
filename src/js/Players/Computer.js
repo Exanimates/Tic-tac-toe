@@ -5,7 +5,7 @@ class Computer extends SimpleGameObject {
 	}
 
 	// Взвешенный ход
-	step(board, checkWin, simpleGameObject, setCell) {
+	step(board, checkWin, simpleGameObject, occupationCell) {
 		const count = board.getElementsByTagName("tr").length;
 
 		// Приоритет хода.В зависмости от него компьютер обороняется/атакует 
@@ -43,15 +43,14 @@ class Computer extends SimpleGameObject {
 		}
 		// Если приоритет не изменился, то компьютер ходит случайно
 		if (priority === 0) {
-			this.randomStep(count, board);
+			this.randomStep(count, board, occupationCell);
 		} else {
-			board.rows[px].cells[py].innerHTML = this.icon;
-			board.rows[px].cells[py].classList.add("o");
+			occupationCell(board.rows[px].cells[py], this.icon);
 		}
 	}
 
 	// Случайный ход
-	randomStep(count, board) {
+	randomStep(count, board, occupationCell) {
 		let i = Math.floor(Math.random() * (count));
 		let j = Math.floor(Math.random() * (count));
 
@@ -59,7 +58,6 @@ class Computer extends SimpleGameObject {
 			i = Math.floor(Math.random() * (count) );
 			j = Math.floor(Math.random() * (count) );
 		}
-		board.rows[i].cells[j].innerHTML = this.icon;
-		board.rows[i].cells[j].classList.add("o");
+		occupationCell(board.rows[i].cells[j], this.icon);
 	}
 }

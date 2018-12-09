@@ -69,4 +69,9 @@ class View
 		}
 	}
 
+	// Занятие ячейки игрового поля
+	occupationCell(articles, icon){
+		articles.innerText = icon;
+		articles.classList.add(icon);
+	}
 }

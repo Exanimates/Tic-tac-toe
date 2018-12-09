@@ -15,7 +15,7 @@ $(document).ready(function () {
 	// Первый ход компьютера
 	$('.fa-desktop').click(function () {
 		newParty();
-		gameLogic.computer.randomStep($('.game > table  tr').length, gameLogic.board);
+		gameLogic.computer.randomStep($('.game > table  tr').length, gameLogic.board, gameLogic.view.occupationCell);
 	});
 
 	// Показ/скрытие блоков
