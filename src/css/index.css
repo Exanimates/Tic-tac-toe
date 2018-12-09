@@ -27,15 +27,6 @@ header>div {
 	justify-content: center
 }
 
-.titles {
-	width: 250px;
-	display: block;
-	align-items: center;
-	justify-content: center;
-	margin-top: 20px;
-	border: 1px solid white;
-}
-
 .history {
 	display: none;
 	align-items: center;
@@ -46,7 +37,7 @@ header>div {
 	height: 60%;
 }
 
-.history table {
+.history>table {
 	margin-left: 20px;
 	margin-top: 20px;
 	border: 1px solid white;
@@ -100,11 +91,6 @@ header>div {
 	height: 42%;
 }
 
-.historyElement {
-	border: 1px solid white;
-	border-radius: 20px;
-}
-
 .show-history__buttons {
 	display: block;
 	margin: 0 auto;
@@ -123,8 +109,8 @@ header>div {
 }
 
 .game__board {
-	width: 250px;
-	height: 250px;
+	width: 270px;
+	height: 270px;
 	border-collapse: collapse;
 	-webkit-user-select: none;
 	/* Chrome all / Safari all */
@@ -211,7 +197,7 @@ tr:last-of-type td:last-child {
 	border-radius: 20px;
 }
 
-.help-block p {
+.help-block__paragraph {
 	color: white;
 	font-size: 20px;
 	font-family: 'Open Sans Condensed', sans-serif;
@@ -233,10 +219,12 @@ tr:last-of-type td:last-child {
 .choose-player__content__description {
 	display: inline-block;
 	color: white;
+	display: flex;
+	flex-direction: column;
 }
 
 .choose-player__content__description__text {
-	font-size: 20px;
+	font-size: 25px;
 	text-align: center;
 }
 
