@@ -1,27 +1,27 @@
 const gameLogic = new GameLogic();
-var articles = document.getElementById("board").getElementsByTagName("td");
+var articles = $('.game > table  td');
 
 // Добавление обработчиков события click
-$(document).ready(function(){
-	$('#user-icon').click(function() {
+$(document).ready(function () {
+	$('.fa-user-circle').click(function () {
 		newParty();
 	});
-	$('#computer-icon').click(function() {
+	$('.fa-desktop').click(function () {
 		newParty();
-		gameLogic.computer.randomStep(gameLogic.board.getElementsByTagName("tr").length, gameLogic.board);
+		gameLogic.computer.randomStep($('.game > table  tr').length, gameLogic.board);
 	});
-	$('#button-show-history').click(function() {
+	$('.show-history__buttons').click(function () {
 		gameLogic.view.showBlock('#history', 'flex');
 	});
-	$('#help-button').click(function() {
-		gameLogic.view.showBlock('#help-block', '');
+	$('.header__help__button').click(function () {
+		gameLogic.view.showBlock('.help-block', '');
 	});
 })
 // Запуск новой игровой партии
-function newParty(){
-	gameLogic.view.restart(document.getElementById("board"));
-	$(articles).click(function(){
+function newParty() {
+	gameLogic.view.restart($('.game table')[0]);
+	$(articles).click(function () {
 		gameLogic.clickOnCell(this);
 	});
-	gameLogic.view.showBlock(document.getElementById("player-move"));
+	gameLogic.view.showBlock($('.choose-player'));
 }

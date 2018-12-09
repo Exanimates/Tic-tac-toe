@@ -15,7 +15,7 @@ class View
 		}
 		this.removeEvent(this.gameLogic.board);
 		this.addElementToHistory(this.gameLogic.board);
-		this.showBlock(document.getElementById("player-move"));
+		this.showBlock($('.choose-player'));
 	}
 
 	 // Добавление нового элемента в историю игр
@@ -33,13 +33,13 @@ class View
 
 	// Рестарт игры
 	restart(board) {
-		const elements = board.getElementsByTagName("td");
+		const elements = $(board).find('td');
 		for (let i = 0; i < elements.length; i++) {
 			elements[i].innerHTML = "";
 			elements[i].classList.remove("x");
 			elements[i].classList.remove("o");
 		}
-		this.showBlock(document.getElementById("player-move"), "inline-block");
+		this.showBlock($('.choose-player'), "inline-block");
 	}
 	// Изменение видмости блока
 	showBlock(element, blockStyle){
