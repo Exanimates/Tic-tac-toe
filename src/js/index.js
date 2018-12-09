@@ -11,7 +11,7 @@ $(document).ready(function () {
 		gameLogic.computer.randomStep($('.game > table  tr').length, gameLogic.board);
 	});
 	$('.show-history__buttons').click(function () {
-		gameLogic.view.showBlock('#history', 'flex');
+		gameLogic.view.showBlock('.history', 'flex');
 	});
 	$('.header__help__button').click(function () {
 		gameLogic.view.showBlock('.help-block', '');

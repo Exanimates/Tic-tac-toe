@@ -36,9 +36,21 @@ header>div {
 	border: 1px solid white;
 }
 
-header a {
-	margin-left: 5px;
-	color: white;
+.history {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	border-top: 2px solid white;
+	flex-wrap: wrap;
+	margin-top: 20px;
+	height: 60%;
+}
+
+.history table {
+	margin-left: 20px;
+	margin-top: 20px;
+	border: 1px solid white;
+	border-radius: 20px;
 }
 
 .game-score__player {
@@ -86,23 +98,6 @@ header a {
 	align-items: center;
 	justify-content: center;
 	height: 42%;
-}
-
-#history {
-	display: none;
-	align-items: center;
-	justify-content: center;
-	border-top: 2px solid white;
-	flex-wrap: wrap;
-	margin-top: 20px;
-	height: 60%;
-}
-
-#history table {
-	margin-left: 20px;
-	margin-top: 20px;
-	border: 1px solid white;
-	border-radius: 20px;
 }
 
 .historyElement {
@@ -219,12 +214,6 @@ tr:nth-of-type(3) td {
 	color: white;
 }
 
-.choose-player i {
-	margin: 0 auto;
-	cursor: pointer;
-	margin-bottom: 20px;
-}
-
 .choose-player__content__description {
 	display: inline-block;
 	color: white;
@@ -237,6 +226,12 @@ tr:nth-of-type(3) td {
 
 .fa:hover {
 	color: #ccc;
+}
+
+.fa {
+	margin: 0 auto;
+	cursor: pointer;
+	margin-bottom: 20px;
 }
 
 .header__help__button:hover {

@@ -20,7 +20,7 @@ class View
 
 	 // Добавление нового элемента в историю игр
 	 addElementToHistory(board) {
-		 var historyBlock = document.getElementById("history");
+		 var historyBlock = $('.history')[0];
 		 var elementOfHistory = board.cloneNode(true);
 		 historyBlock.appendChild(elementOfHistory);
 	 }
