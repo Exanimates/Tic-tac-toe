@@ -2,7 +2,7 @@
 class GameLogic {
 	constructor() {
 		// Инициализация нужных HTML элементов
-		this.board = $('.game > table')[0];
+		this.board = document.getElementById('game__board');
 		this.compCountHtml = document.getElementById("computer-count"); 
 		this.playerCountHtml = document.getElementById("player-count"); 
 

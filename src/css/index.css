@@ -108,7 +108,7 @@ header>div {
 	background-color: #ccc;
 }
 
-.game__board {
+#game__board {
 	width: 270px;
 	height: 270px;
 	border-collapse: collapse;
