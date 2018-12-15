@@ -5,8 +5,8 @@ class Computer extends SimpleGameObject {
 	}
 
 	// Взвешенный ход
-	step(board, checkWin, simpleGameObject, occupationCell) {
-		const count = board.getElementsByTagName("tr").length;
+	step(board, checkWin, simpleGameObject, view) {
+		const count = board.length;
 
 		// Приоритет хода.В зависмости от него компьютер обороняется/атакует 
 		let priority = 0;
@@ -15,9 +15,9 @@ class Computer extends SimpleGameObject {
 
 		for (let i = 0; i <= count - 1; i++) {
 			for (let j = 0; j <= count - 1; j++) {
-				if (!board.rows[i].cells[j].textContent) {
+				if (board[i][j] === "") {
 					// Имитируем ход компьютера
-					board.rows[i].cells[j].innerHTML = this.icon;
+					board[i][j] = this.icon;
 					// Если ход компьютра победный, то сохраняем индексы ячейки
 					if (checkWin(board, this)) {
 						px = i;
@@ -26,7 +26,7 @@ class Computer extends SimpleGameObject {
 						break;
 					}
 					// Имитируем ход пользователя
-					board.rows[i].cells[j].innerHTML = simpleGameObject.icon;
+					board[i][j] = simpleGameObject.icon;
 					// Если ход компьютра победный, то сохраняем индексы ячейки
 					if (checkWin(board, simpleGameObject)) {
 						px = i;
@@ -34,7 +34,7 @@ class Computer extends SimpleGameObject {
 						priority = 1;
 					}
 					// Очищаем ячейку после симулированных ходов
-					board.rows[i].cells[j].innerHTML = "";
+					board[i][j] = "";
 				}
 			}
 			// Если у комьютера есть возможность выиграть, то выходим из цикла
@@ -43,21 +43,23 @@ class Computer extends SimpleGameObject {
 		}
 		// Если приоритет не изменился, то компьютер ходит случайно
 		if (priority === 0) {
-			this.randomStep(count, board, occupationCell);
+			this.randomStep(count, board, view);
 		} else {
-			occupationCell(board.rows[px].cells[py], this.icon);
+			board[px][py] = this.icon;
+			view.occupationCell(px, py, this.icon);
 		}
 	}
 
 	// Случайный ход
-	randomStep(count, board, occupationCell) {
+	randomStep(count, board, view) {
 		let i = Math.floor(Math.random() * (count));
 		let j = Math.floor(Math.random() * (count));
 
-		while (board.rows[i].cells[j].textContent) {
+		while (board[i][j] !== "") {
 			i = Math.floor(Math.random() * (count) );
 			j = Math.floor(Math.random() * (count) );
 		}
-		occupationCell(board.rows[i].cells[j], this.icon);
+		board[i][j] = this.icon;
+		view.occupationCell(i, j, this.icon);
 	}
 }

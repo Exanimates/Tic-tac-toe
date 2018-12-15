@@ -3,32 +3,38 @@ class View
 {
 	constructor(gameLogic){
 		this.gameLogic = gameLogic;
+
+		// Инициализация нужных HTML элементов
+		this.board = document.getElementById('game__board');
+		this.compCountHtml = document.getElementById("computer-count"); 
+		this.playerCountHtml = document.getElementById("player-count"); 
 	}
 	
 	// Обновление UI в зависимости от исхода партии
-	updateUiAfterEndParty(message, alert, html_component) {
-		if (arguments.length == 1) {
-			swal({title:message});
-		}
-		if (arguments.length == 3) {
-			html_component.innerText = Number(html_component.innerText) + 1;
-			swal({title: message, icon: alert});
-		}
-		this.removeEvent(this.gameLogic.board);
+	updateUiAfterEndParty(message, alert) {
+
+		if (alert === "warning")
+			this.compCountHtml.innerText = Number(this.compCountHtml.innerText) + 1;
+
+		if (alert === "success")
+			this.playerCountHtml.innerText = Number(this.playerCountHtml.innerText) + 1;	
+		
+		swal({title: message, icon: alert});
+		this.removeEvent();
 		this.addElementToHistory(this.gameLogic.board);
 		this.showBlock($('.choose-player'));
 	}
 
 	 // Добавление нового элемента в историю игр
-	 addElementToHistory(board) {
-		 var historyBlock = $('.history')[0];
-		 var elementOfHistory = board.cloneNode(true);
+	 addElementToHistory() {
+		 var historyBlock = document.getElementById("history");
+		 var elementOfHistory = this.board.cloneNode(true);
 		 historyBlock.appendChild(elementOfHistory);
 	 }
 
 	// Удаления событий повешенных на ячейки игрового поля
-	removeEvent(board) {
-		const elements = board.getElementsByTagName("td");
+	removeEvent() {
+		const elements = this.board.getElementsByTagName("td");
 		$(elements).unbind();
 	}
 
@@ -54,24 +60,24 @@ class View
 	}
 
 	// Отрисовка таблицы согласно заданным размерам
-	renderTable(boardLength, board) {
+	renderTable(boardLength) {
 
-		for (let j = 0; j <= boardLength; j++) {
+		for (let j = 0; j < boardLength; j++) {
 
 			let row = document.createElement("tr");
 
-			for (var i = 0; i <= boardLength; i++) {
+			for (var i = 0; i < boardLength; i++) {
 				let cell = document.createElement("td");
 				row.appendChild(cell);
 			}
 
-			board.appendChild(row);
+			this.board.appendChild(row);
 		}
 	}
 
 	// Занятие ячейки игрового поля
-	occupationCell(articles, icon){
-		articles.innerText = icon;
-		articles.classList.add(icon);
+	occupationCell(x, y, icon){
+		this.board.rows[x].cells[y].innerText = icon;
+		this.board.rows[x].cells[y].classList.add(icon);
 	}
 }

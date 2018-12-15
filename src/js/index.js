@@ -1,5 +1,5 @@
-// Инициализируем игровую логику
-const gameLogic = new GameLogic();
+// Инициализируем игровую логику. Входной параметр - размер игрового поля
+const gameLogic = new GameLogic(3);
 
 // Получаем ячейки игрового поля
 var articles = $('.game > table  td');
@@ -15,12 +15,13 @@ $(document).ready(function () {
 	// Первый ход компьютера
 	$('.fa-desktop').click(function () {
 		newParty();
-		gameLogic.computer.randomStep($('.game > table  tr').length, gameLogic.board, gameLogic.view.occupationCell);
+		gameLogic.computer.randomStep($('.game > table  tr').length, 
+		gameLogic.gameModel, gameLogic.view);
 	});
 
 	// Показ/скрытие блоков
 	$('.show-history__buttons').click(function () {
-		gameLogic.view.showBlock('.history', 'flex');
+		gameLogic.view.showBlock('#history', 'flex');
 	});
 	$('.header__help__button').click(function () {
 		gameLogic.view.showBlock('.help-block', '');
@@ -31,8 +32,9 @@ $(document).ready(function () {
 function newParty() {
 
 	// Сброс UI игры в начало партии
-	gameLogic.view.restart($('.game table')[0]);
+	gameLogic.view.restart($('#game__board'));
 
+	gameLogic.clearModel();
 	// Вешаем обработчик кликов на ячейки игрового поля
 	$(articles).click(function () {
 		gameLogic.clickOnCell(this);

@@ -4,10 +4,8 @@ class SimpleGameObject {
         this.icon = icon;
     }
     // Занятие места в ячейке
-    step(articles, gameModel) {
-        articles.innerText = this.icon;
-        articles.classList.add("x");
-
-        gameModel[articles.cellIndex] [articles.parentElement.rowIndex] = this.icon;
+    step(x, y, view ,gameModel) {
+        view.occupationCell(x, y, this.icon)
+        gameModel[x][y] = this.icon;
     }
 }
