@@ -6,6 +6,8 @@ class GameLogic {
 		this.compCountHtml = document.getElementById("computer-count"); 
 		this.playerCountHtml = document.getElementById("player-count"); 
 
+		this.gameModel = [ [], [], [] ];
+
 		// Инициализация игровых объектов
 		this.computer = new Computer("o");
 		this.humanPlayer = new SimpleGameObject("x");
@@ -22,7 +24,7 @@ class GameLogic {
 		// Проверка содержимого ячейки
 		if (!cell.textContent) { 
 			// Ход пользователя
-			this.humanPlayer.step(cell);
+			this.humanPlayer.step(cell, this.gameModel);
 			//Проверка исхода партии
 			if (this.checkGameState(this.humanPlayer) !== undefined){
 				return;
