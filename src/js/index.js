@@ -2,7 +2,7 @@
 const gameLogic = new GameLogic(3);
 
 // Получаем ячейки игрового поля
-var articles = $('.game > table  td');
+var articles = $('#game__board td');
 
 // Добавление обработчиков события click
 $(document).ready(function () {
