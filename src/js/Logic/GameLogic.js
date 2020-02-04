@@ -49,7 +49,7 @@ class GameLogic {
 			}
 			this.view.updateUiAfterEndParty( "Вы победили в партии", "success");
 			return true;	
-		} else {
+		} else if (win == false) {
 			this.view.updateUiAfterEndParty("Ничья");
 			return false;
 		}
