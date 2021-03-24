@@ -28,13 +28,14 @@ header>div {
 }
 
 #history {
-	display: none;
+	display: grid;
 	align-items: center;
 	justify-content: center;
 	border-top: 2px solid white;
 	flex-wrap: wrap;
 	margin-top: 20px;
 	height: 60%;
+	grid-template-columns: repeat(auto-fit, 300px);
 }
 
 #history>table {

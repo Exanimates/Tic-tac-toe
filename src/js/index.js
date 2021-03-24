@@ -21,9 +21,11 @@ $(document).ready(function () {
 		gameLogic.gameModel, gameLogic.view);
 	});
 
+	gameLogic.view.showBlock('#history');
+
 	// Показ/скрытие блоков
 	$('.show-history__buttons').click(function () {
-		gameLogic.view.showBlock('#history', 'flex');
+		gameLogic.view.showBlock('#history', '');
 	});
 	$('.header__help__button').click(function () {
 		gameLogic.view.showBlock('.help-block', '');

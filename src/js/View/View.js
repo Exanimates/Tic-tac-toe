@@ -55,8 +55,10 @@ export default class View
 			$(element).fadeIn(250);
 			$(element).css({'display': blockStyle});
 		}	
-		else
+		else {
 			$(element).fadeOut(250);
+			$(element).css({'display': ''});
+		}
 	}
 
 	// Отрисовка таблицы согласно заданным размерам
