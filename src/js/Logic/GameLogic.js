@@ -1,5 +1,9 @@
+import Computer from '../Players/Computer.js';
+import SimpleGameObject from '../Players/SimpleGameObject.js';
+import View from '../View/View.js';
+
 // Класс с игровой логикой: ралзичные проверки/ходы игровых сущностей
-class GameLogic {
+export default class GameLogic {
 	constructor(lengthBoard) {
 
 		// Инициализация игровой модели

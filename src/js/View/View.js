@@ -1,5 +1,5 @@
 // Класс отвечающий за UI: отрисовка/обновление/добавление элементов
-class View
+export default class View
 {
 	constructor(gameLogic){
 		this.gameLogic = gameLogic;
