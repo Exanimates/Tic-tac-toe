@@ -1,5 +1,5 @@
 // Базовый класс для игровых сущностей. Умеет ходить (занимать ячейку)
-class SimpleGameObject {
+export default class SimpleGameObject {
     constructor(icon) {
         this.icon = icon;
     }

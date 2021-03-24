@@ -1,5 +1,7 @@
+import SimpleGameObject from './SimpleGameObject.js';
+
 // Класс для игровой сущности компьютер. Умеет ходить взвешенно/случайно
-class Computer extends SimpleGameObject {
+export default class Computer extends SimpleGameObject {
 	constructor(icon){
 		super(icon);
 	}

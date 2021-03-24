@@ -1,3 +1,5 @@
+import GameLogic from './Logic/GameLogic.js';
+
 // Инициализируем игровую логику. Входной параметр - размер игрового поля
 const gameLogic = new GameLogic(3);
 
